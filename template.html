@@ -69,10 +69,10 @@
             
             <!-- Hero News (占据左侧 2列 2行) -->
             <!-- 强制设置高度，确保图片展示 -->
-            <div class="bento-card md:col-span-2 md:row-span-2 relative overflow-hidden group min-h-[400px] flex flex-col justify-end">
+            <div class="bento-card md:col-span-2 md:row-span-2 relative overflow-hidden group min-h-[400px] flex flex-col justify-end bg-gray-900">
                 <!-- 图片层 -->
-                <div class="absolute inset-0 z-0">
-                    <img src="{{HERO_IMAGE_URL}}" alt="Cover" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-80">
+                <div class="absolute inset-0 z-0 bg-gradient-to-br from-blue-900 to-black">
+                    <img src="{{HERO_IMAGE_URL}}" alt="Cover" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-80 mix-blend-overlay" onerror="this.style.display='none'">
                 </div>
                 <!-- 遮罩层 -->
                 <div class="absolute inset-0 hero-gradient z-10"></div>

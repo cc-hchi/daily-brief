@@ -219,14 +219,16 @@ def build():
     keyword = hero.get("image_keyword", "technology")
     
     if "dna" in keyword.lower() or "bio" in keyword.lower():
-        # 深色 DNA 螺旋
-        image_url = "https://images.unsplash.com/photo-1614633785233-0c464402a5c1?q=80&w=1600&auto=format&fit=crop"
+        # DNA 螺旋 (Picsum / 这里的 ID 是示例，为了稳我们用随机种子)
+        # image_url = "https://picsum.photos/seed/dna/800/600"
+        # 或者用一个确定能访问的图 (比如 Wikimedia Commons 的高质量图，或者 GitHub 上的资源)
+        # 既然 Unsplash 挂了，我们用一个完全不同的策略：
+        # 使用 Polination AI (通常没被墙)
+        image_url = "https://image.pollinations.ai/prompt/DNA%20helix%20dark%20cinematic%20tech?width=1024&height=768&nologo=true"
     elif "chip" in keyword.lower() or "nvidia" in keyword.lower():
-        # 芯片微距
-        image_url = "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?q=80&w=1600&auto=format&fit=crop"
+        image_url = "https://image.pollinations.ai/prompt/microchip%20processor%20glowing%20blue%20dark?width=1024&height=768&nologo=true"
     else:
-        # 深色抽象光影
-        image_url = "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1600&auto=format&fit=crop"
+        image_url = "https://image.pollinations.ai/prompt/abstract%20dark%20technology%20mesh?width=1024&height=768&nologo=true"
 
     html = html.replace("{{HERO_IMAGE_URL}}", image_url)
     
