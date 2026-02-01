@@ -1,38 +1,39 @@
 {
   "weather": {
     "temp": "23°C",
-    "cond": "Cloudy",
-    "advice": "High humidity (88%). Expect light rain in Nanshan later today."
+    "cond": "多云",
+    "advice": "湿度 88%，体感闷热，南山区可能有零星小雨。"
   },
   "hero_news": {
-    "title": "DeepMind Unveils AlphaGenome: AI Breakthrough in DNA Analysis",
+    "title": "DeepMind 发布 AlphaGenome：AI 破译 DNA 及其调控机制",
     "source": "RTL Today / DeepMind",
     "url": "https://today.rtl.lu/news/business-and-tech/social-media-for-ai-agents-striking-health-advancements-and-stark-warning-from-leading-figure-1593054301",
-    "summary": "Google's DeepMind has formally unveiled AlphaGenome, an advanced AI designed to analyze long stretches of DNA. It predicts how genetic variants influence gene regulation, promising to accelerate genomics research and new medicine production."
+    "summary": "Google DeepMind 正式推出 AlphaGenome，这是一款能分析超长 DNA 序列的高级 AI 模型。它能预测基因变异如何影响基因调控，有望大幅加速基因组学研究和新药研发进程。",
+    "image_keyword": "dna helix abstract technology"
   },
   "stocks": [
-    {"symbol": "NVDA", "price": "$192.00", "change": "+1.85% (Pre)", "trend": "up"},
-    {"symbol": "GOOG", "price": "$338.20", "change": "-0.10% (After)", "trend": "down"}
+    {"symbol": "NVDA (英伟达)", "price": "$192.00", "change": "+1.85% (盘前)", "trend": "up"},
+    {"symbol": "GOOG (谷歌)", "price": "$338.20", "change": "-0.10% (盘后)", "trend": "down"}
   ],
   "secondary_news": [
     {
-      "title": "SoftBank Dumps Entire Nvidia Stake to Fund $30B OpenAI Bet",
-      "source": "Yahoo Finance",
+      "title": "软银抛售 58 亿美元英伟达持仓，转而押注 OpenAI",
+      "source": "Yahoo 财经",
       "url": "https://finance.yahoo.com/news/softbank-talks-invest-30-billion-040911146.html",
-      "time": "4d ago"
+      "time": "4天前"
     },
     {
-      "title": "Alphabet Seeks $16B Funding for Waymo at $110B Valuation",
-      "source": "Yahoo Finance",
+      "title": "Alphabet 寻求为 Waymo 融资 160 亿美元，估值冲刺 1100 亿",
+      "source": "Yahoo 财经",
       "url": "https://finance.yahoo.com/quote/GOOG/",
-      "time": "13m ago"
+      "time": "30分钟前"
     },
     {
-      "title": "OpenAI o1: Learning to Reason with Chain of Thought",
-      "source": "OpenAI Research",
+      "title": "OpenAI o1 深度解析：思维链 (CoT) 如何重塑推理能力",
+      "source": "OpenAI 研究中心",
       "url": "https://openai.com/index/learning-to-reason-with-llms/",
-      "time": "Insight"
+      "time": "深度洞察"
     }
   ],
-  "session_id": "SESS-LIVE-002"
+  "session_id": "SESS-CN-001"
 }

@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daily Briefing · Intelligence</title>
+    <title>每日情报 · Intelligence</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
+                        sans: ['Inter', 'Noto Sans SC', 'sans-serif'],
                         mono: ['JetBrains Mono', 'monospace'],
                     },
                     colors: {
@@ -20,10 +20,6 @@
                             900: '#000000',
                             800: '#0a0a0a',
                             700: '#171717',
-                        },
-                        accent: {
-                            500: '#3b82f6', // Blue
-                            600: '#2563eb',
                         }
                     },
                     animation: {
@@ -42,15 +38,15 @@
     <style>
         body {
             background-color: #050505;
-            background-image: radial-gradient(circle at 50% 0%, #1e1b4b 0%, #000000 60%);
+            background-image: radial-gradient(circle at 50% 0%, #1a1a2e 0%, #000000 70%);
             min-height: 100vh;
         }
         .glass-card {
-            background: rgba(23, 23, 23, 0.6);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+            background: rgba(23, 23, 23, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
         }
         .glass-card:hover {
             border-color: rgba(255, 255, 255, 0.15);
@@ -66,16 +62,16 @@
 
     <div class="max-w-6xl mx-auto">
         <!-- Header -->
-        <header class="flex justify-between items-end mb-8 animate-fade-in-up">
+        <header class="flex justify-between items-end mb-8 animate-fade-in-up border-b border-white/5 pb-6">
             <div>
-                <p class="text-xs font-mono text-blue-400 uppercase tracking-widest mb-1">Daily Intelligence</p>
-                <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight text-white">{{DATE_STR_SHORT}}</h1>
+                <p class="text-xs font-mono text-blue-500 uppercase tracking-widest mb-2 font-bold">每日情报摘要</p>
+                <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight text-white">{{DATE_STR_SHORT}}</h1>
             </div>
             <div class="text-right hidden md:block">
-                <div class="text-sm text-gray-400">Shenzhen, CN</div>
-                <div class="flex gap-3 justify-end text-xs font-mono text-gray-600">
+                <div class="text-sm text-gray-400">中国 · 深圳</div>
+                <div class="flex gap-4 justify-end text-xs font-mono text-gray-600 mt-1">
                     <span>ID: {{SESSION_ID}}</span>
-                    <a href="archive/index.html" class="text-blue-500 hover:text-blue-400 hover:underline">HISTORY</a>
+                    <a href="archive/index.html" class="text-blue-500 hover:text-blue-400 hover:underline transition-colors">历史归档</a>
                 </div>
             </div>
         </header>
@@ -84,68 +80,71 @@
         <div class="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-min">
             
             <!-- Weather Widget (1x1) -->
-            <div class="glass-card rounded-2xl p-6 flex flex-col justify-between animate-fade-in-up animate-delay-100 md:col-span-1 h-48 relative overflow-hidden group">
+            <div class="glass-card rounded-2xl p-6 flex flex-col justify-between animate-fade-in-up animate-delay-100 md:col-span-1 h-48 relative overflow-hidden group bg-gradient-to-br from-blue-900/20 to-transparent">
                 <div class="absolute -right-6 -top-6 w-24 h-24 bg-blue-500 rounded-full blur-3xl opacity-20 group-hover:opacity-30 transition-opacity"></div>
                 <div>
-                    <div class="text-gray-400 text-xs font-mono mb-1">WEATHER</div>
-                    <div class="text-3xl font-bold text-white">{{WEATHER_TEMP_VAL}}</div>
+                    <div class="text-gray-400 text-xs font-mono mb-1 tracking-wider">今日天气</div>
+                    <div class="text-3xl font-bold text-white tracking-tight">{{WEATHER_TEMP_VAL}}</div>
                 </div>
                 <div>
-                    <div class="text-sm font-medium">{{WEATHER_COND}}</div>
-                    <div class="text-xs text-gray-400 mt-1 leading-relaxed">{{WEATHER_ADVICE}}</div>
+                    <div class="text-sm font-medium text-blue-100">{{WEATHER_COND}}</div>
+                    <div class="text-xs text-gray-400 mt-2 leading-relaxed border-t border-white/5 pt-2">{{WEATHER_ADVICE}}</div>
                 </div>
             </div>
 
             <!-- Market Widget (1x1) -->
             <div class="glass-card rounded-2xl p-6 flex flex-col justify-between animate-fade-in-up animate-delay-100 md:col-span-1 h-48">
-                <div class="text-gray-400 text-xs font-mono mb-1">MARKET MOVERS</div>
-                <div class="space-y-3">
+                <div class="flex justify-between items-center mb-2">
+                    <div class="text-gray-400 text-xs font-mono tracking-wider">市场脉搏</div>
+                    <div class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></div>
+                </div>
+                <div class="space-y-3 flex-1 flex flex-col justify-center">
                     {{STOCK_LIST}}
                 </div>
-                <div class="text-[10px] text-gray-500 mt-2">REAL-TIME / PRE-MARKET</div>
+                <div class="text-[10px] text-gray-600 mt-2 font-mono">美股 · 实时行情</div>
             </div>
 
-            <!-- Hero News (Level 1) (2x2) - The Big Story -->
-            <div class="glass-card rounded-2xl p-8 md:col-span-2 md:row-span-2 flex flex-col justify-end relative overflow-hidden animate-fade-in-up animate-delay-200 border-l-4 border-l-blue-500">
-                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent z-0"></div>
-                <!-- Background Image Placeholder - In real version, inject relevant image -->
-                <div class="absolute inset-0 bg-gray-800 opacity-50 z-[-1]" style="background-image: url('https://source.unsplash.com/random/800x600/?technology,ai'); background-size: cover; background-position: center; mix-blend-mode: overlay;"></div>
+            <!-- Hero News (Level 1) (2x2) - With Image -->
+            <div class="glass-card rounded-2xl md:col-span-2 md:row-span-2 flex flex-col justify-end relative overflow-hidden animate-fade-in-up animate-delay-200 group h-[400px] md:h-auto">
+                <!-- Dynamic Background Image -->
+                <div class="absolute inset-0 bg-gray-900 z-0 transition-transform duration-700 group-hover:scale-105">
+                    <img src="{{HERO_IMAGE_URL}}" alt="Hero" class="w-full h-full object-cover opacity-60 mix-blend-overlay">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent"></div>
+                </div>
                 
-                <div class="relative z-10">
-                    <div class="flex items-center gap-2 mb-3">
-                        <span class="px-2 py-1 bg-blue-600 text-white text-[10px] font-bold uppercase tracking-wider rounded">Must Know</span>
-                        <span class="text-xs text-gray-300 font-mono">{{HERO_SOURCE}}</span>
+                <div class="relative z-10 p-8">
+                    <div class="flex items-center gap-3 mb-4">
+                        <span class="px-2 py-0.5 bg-blue-600/90 backdrop-blur-sm text-white text-[10px] font-bold uppercase tracking-wider rounded shadow-lg shadow-blue-900/50">今日头条</span>
+                        <span class="text-xs text-gray-300 font-mono tracking-tight bg-black/30 px-2 py-0.5 rounded backdrop-blur-md">{{HERO_SOURCE}}</span>
                     </div>
-                    <h2 class="text-2xl md:text-3xl font-bold text-white leading-tight mb-3">
-                        <a href="{{HERO_URL}}" target="_blank" class="hover:underline decoration-blue-500 decoration-2 underline-offset-4">{{HERO_TITLE}}</a>
+                    <h2 class="text-2xl md:text-3xl font-bold text-white leading-tight mb-4 tracking-tight drop-shadow-lg">
+                        <a href="{{HERO_URL}}" target="_blank" class="hover:text-blue-400 transition-colors">{{HERO_TITLE}}</a>
                     </h2>
-                    <p class="text-gray-300 text-sm line-clamp-3 md:line-clamp-none mb-4 leading-relaxed">
+                    <p class="text-gray-300 text-sm md:text-base line-clamp-3 mb-4 leading-relaxed max-w-lg drop-shadow-md">
                         {{HERO_SUMMARY}}
                     </p>
                     
-                    <!-- Feedback Interactions -->
-                    <div class="flex gap-4 mt-2 opacity-0 group-hover:opacity-100 transition-opacity">
-                         <button class="text-xs text-gray-500 hover:text-white transition-colors">👍 Important</button>
-                         <button class="text-xs text-gray-500 hover:text-white transition-colors">👎 Irrelevant</button>
-                    </div>
+                    <a href="{{HERO_URL}}" target="_blank" class="inline-flex items-center text-xs text-blue-400 font-medium hover:text-blue-300 transition-colors uppercase tracking-widest group/link">
+                        阅读全文 <span class="ml-1 transform group-hover/link:translate-x-1 transition-transform">→</span>
+                    </a>
                 </div>
             </div>
 
             <!-- Secondary News List (Level 2/3) (2x1) -->
             <div class="glass-card rounded-2xl p-6 md:col-span-2 animate-fade-in-up animate-delay-300">
-                <div class="text-gray-400 text-xs font-mono mb-4 flex justify-between">
-                    <span>RADAR</span>
-                    <span>{{DATE_SHORT}}</span>
+                <div class="text-gray-400 text-xs font-mono mb-5 flex justify-between items-center border-b border-white/5 pb-3">
+                    <span class="tracking-wider">情报雷达</span>
+                    <span class="text-[10px] bg-white/5 px-2 py-0.5 rounded text-gray-500">{{DATE_SHORT}}</span>
                 </div>
-                <div class="space-y-4">
+                <div class="space-y-1">
                     {{SECONDARY_NEWS_LIST}}
                 </div>
             </div>
 
             <!-- Footer / Stats (4x1) -->
-            <div class="md:col-span-4 mt-4 text-center pb-8 opacity-50">
-                <p class="text-[10px] font-mono text-gray-600">
-                    SYSTEM: ONLINE · VERSION 2.0 · EVOLVING BASED ON FEEDBACK
+            <div class="md:col-span-4 mt-8 text-center pb-8 opacity-40 hover:opacity-100 transition-opacity duration-500">
+                <p class="text-[10px] font-mono text-gray-600 tracking-widest">
+                    SYSTEM: ONLINE · VER 3.0 · DESIGNED FOR C
                 </p>
             </div>
             
