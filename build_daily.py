@@ -133,11 +133,22 @@ def build():
     html = html.replace("{{SECONDARY_NEWS_LIST}}", secondary_html)
     html = html.replace("{{STOCK_LIST}}", stocks_html)
 
+    # 1. 生成主页 (index.html)
+    # 主页在根目录，去 Archive 需要进一层
+    index_html = html.replace("{{ARCHIVE_LINK}}", "archive/index.html")
     with open(OUTPUT_PATH, "w", encoding="utf-8") as f:
-        f.write(html)
+        f.write(index_html)
         
+    # 2. 生成归档页 (archive/YYYY-MM-DD.html)
+    # 归档页在 archive/ 目录下，History 就在同级 (或者上一级再回来，其实就是同级的 index.html)
+    # 所以链接应该是 "index.html" (指向 archive/index.html)
+    archive_html = html.replace("{{ARCHIVE_LINK}}", "index.html")
+    
     if not os.path.exists(ARCHIVE_DIR): os.makedirs(ARCHIVE_DIR)
-    shutil.copy(OUTPUT_PATH, os.path.join(ARCHIVE_DIR, f"{date_iso}.html"))
+    # 直接写入，不再 copy
+    with open(os.path.join(ARCHIVE_DIR, f"{date_iso}.html"), "w", encoding="utf-8") as f:
+        f.write(archive_html)
+
     update_archive_index()
     print(f"Successfully built Dashboard & Archive: {date_iso}")
 
