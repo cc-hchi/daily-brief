@@ -29,22 +29,30 @@
         body {
             background-color: #050505;
             color: #e5e5e5;
-            /* 极简深灰背景，去除花哨的渐变 */
             min-height: 100vh;
         }
         .bento-card {
             background-color: #111111;
             border: 1px solid #222;
-            border-radius: 16px; /* 更圆润 */
+            border-radius: 16px;
             transition: all 0.3s ease;
         }
         .bento-card:hover {
             border-color: #333;
             transform: translateY(-1px);
         }
-        /* 图片遮罩：底部黑色渐变，保证文字可读 */
-        .hero-gradient {
-            background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0) 100%);
+        
+        /* 动态极光渐变 */
+        .aurora-bg {
+            background: linear-gradient(-45deg, #0f172a, #1e1b4b, #312e81, #1e1b4b);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+        }
+        
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
     </style>
 </head>
@@ -68,27 +76,25 @@
         <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
             
             <!-- Hero News (占据左侧 2列 2行) -->
-            <!-- 强制设置高度，确保图片展示 -->
-            <div class="bento-card md:col-span-2 md:row-span-2 relative overflow-hidden group min-h-[400px] flex flex-col justify-end bg-gray-900">
-                <!-- 图片层 -->
-                <div class="absolute inset-0 z-0 bg-gradient-to-br from-blue-900 to-black">
-                    <img src="https://image.pollinations.ai/prompt/DNA%20helix%20dark%20cinematic%20tech?width=1024&height=768&nologo=true" alt="Cover" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-80 mix-blend-overlay" onerror="this.style.display='none'">
-                </div>
-                <!-- 遮罩层 -->
-                <div class="absolute inset-0 hero-gradient z-10"></div>
+            <div class="bento-card md:col-span-2 md:row-span-2 relative overflow-hidden group min-h-[400px] flex flex-col justify-end aurora-bg">
+                <!-- 噪点纹理 (增加质感) -->
+                <div class="absolute inset-0 opacity-20" style="background-image: url('https://grainy-gradients.vercel.app/noise.svg'); mix-blend-mode: overlay;"></div>
                 
+                <!-- 装饰性光晕 -->
+                <div class="absolute -top-20 -right-20 w-64 h-64 bg-blue-500 rounded-full blur-[100px] opacity-20 mix-blend-screen animate-pulse"></div>
+
                 <!-- 内容层 -->
                 <div class="relative z-20 p-8">
-                    <div class="flex items-center gap-2 mb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
-                        <span class="text-[10px] font-medium bg-white text-black px-2 py-0.5 rounded-sm">TOP STORY</span>
-                        <span class="text-[10px] text-gray-300">RTL Today / DeepMind</span>
+                    <div class="flex items-center gap-2 mb-3">
+                        <span class="text-[10px] font-bold bg-white/10 text-white border border-white/20 px-2 py-0.5 rounded backdrop-blur-md shadow-sm">TOP STORY</span>
+                        <span class="text-[10px] text-blue-200/80 font-mono">RTL Today / DeepMind</span>
                     </div>
                     
                     <a href="https://today.rtl.lu/news/business-and-tech/social-media-for-ai-agents-striking-health-advancements-and-stark-warning-from-leading-figure-1593054301" target="_blank" class="block group-hover:opacity-100 transition-opacity">
-                        <h2 class="text-2xl md:text-3xl font-bold text-white leading-tight mb-3 tracking-tight">
+                        <h2 class="text-3xl md:text-4xl font-bold text-white leading-tight mb-4 tracking-tight drop-shadow-lg">
                             DeepMind 发布 AlphaGenome：AI 破译 DNA 及其调控机制
                         </h2>
-                        <p class="text-gray-400 text-sm leading-relaxed line-clamp-3 md:line-clamp-none max-w-md">
+                        <p class="text-blue-100/70 text-sm md:text-base leading-relaxed line-clamp-3 md:line-clamp-none max-w-lg font-light">
                             Google DeepMind 正式推出 AlphaGenome，这是一款能分析超长 DNA 序列的高级 AI 模型。它能预测基因变异如何影响基因调控，有望大幅加速基因组学研究和新药研发进程。
                         </p>
                     </a>
@@ -133,7 +139,6 @@
             </div>
 
             <!-- Secondary List (2x1 纵向长条 或者 2x1 横向) -->
-            <!-- 这里为了布局平衡，我们让它占据右下角 -->
             <div class="bento-card p-6 md:col-span-2 flex flex-col justify-center">
                 <span class="text-xs text-gray-500 uppercase tracking-wider font-medium mb-4 block">BRIEFING</span>
                 <div class="space-y-1">
