@@ -1,0 +1,38 @@
+{
+  "weather": {
+    "temp": "23°C",
+    "cond": "Cloudy",
+    "advice": "High humidity today. Chance of light rain in Nanshan."
+  },
+  "hero_news": {
+    "title": "DeepMind Unveils AlphaGenome: AI Breakthrough in DNA Analysis",
+    "source": "RTL Today / DeepMind",
+    "url": "https://today.rtl.lu/news/business-and-tech/social-media-for-ai-agents-striking-health-advancements-and-stark-warning-from-leading-figure-1593054301",
+    "summary": "Google's DeepMind has formally unveiled AlphaGenome, an advanced AI designed to analyze long stretches of DNA. It predicts how genetic variants influence gene regulation, promising to accelerate genomics research and new medicine production."
+  },
+  "stocks": [
+    {"symbol": "NVDA", "price": "$121.4", "change": "-2.0%", "trend": "down"},
+    {"symbol": "GOOG", "price": "$173.8", "change": "+0.5%", "trend": "up"}
+  ],
+  "secondary_news": [
+    {
+      "title": "SoftBank Dumps $5.8B Nvidia Stake to Fund OpenAI Investment",
+      "source": "MarketBeat / Wiki",
+      "url": "https://en.wikipedia.org/wiki/Nvidia",
+      "time": "7h ago"
+    },
+    {
+      "title": "OpenAI o1 Reasoning Model Continues to Gain Traction",
+      "source": "Wikipedia",
+      "url": "https://en.wikipedia.org/wiki/Large_language_model",
+      "time": "1d ago"
+    },
+    {
+      "title": "OxygenOS 16 Features Leaked: What You Must Know",
+      "source": "Gadgets 360",
+      "url": "https://www.gadgets360.com/news",
+      "time": "12h ago"
+    }
+  ],
+  "session_id": "SESS-LIVE-001"
+}
