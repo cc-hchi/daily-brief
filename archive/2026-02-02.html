@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>每日情报 · Intelligence</title>
+    <title>Intelligence</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Noto+Sans+SC:wght@400;500;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             darkMode: 'class',
@@ -13,22 +13,12 @@
                 extend: {
                     fontFamily: {
                         sans: ['Inter', 'Noto Sans SC', 'sans-serif'],
-                        mono: ['JetBrains Mono', 'monospace'],
                     },
                     colors: {
                         dark: {
-                            900: '#000000',
-                            800: '#0a0a0a',
-                            700: '#171717',
-                        }
-                    },
-                    animation: {
-                        'fade-in-up': 'fadeInUp 0.5s ease-out forwards',
-                    },
-                    keyframes: {
-                        fadeInUp: {
-                            '0%': { opacity: '0', transform: 'translateY(10px)' },
-                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                            bg: '#0a0a0a',
+                            card: '#121212',
+                            border: '#2a2a2a'
                         }
                     }
                 }
@@ -38,67 +28,89 @@
     <style>
         body {
             background-color: #050505;
-            background-image: radial-gradient(circle at 50% 0%, #1a1a2e 0%, #000000 70%);
+            color: #e5e5e5;
+            /* 极简深灰背景，去除花哨的渐变 */
             min-height: 100vh;
         }
-        .glass-card {
-            background: rgba(23, 23, 23, 0.7);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.08);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-        }
-        .glass-card:hover {
-            border-color: rgba(255, 255, 255, 0.15);
-            transform: translateY(-2px);
+        .bento-card {
+            background-color: #111111;
+            border: 1px solid #222;
+            border-radius: 16px; /* 更圆润 */
             transition: all 0.3s ease;
         }
-        .animate-delay-100 { animation-delay: 100ms; }
-        .animate-delay-200 { animation-delay: 200ms; }
-        .animate-delay-300 { animation-delay: 300ms; }
+        .bento-card:hover {
+            border-color: #333;
+            transform: translateY(-1px);
+        }
+        /* 图片遮罩：底部黑色渐变，保证文字可读 */
+        .hero-gradient {
+            background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0) 100%);
+        }
     </style>
 </head>
-<body class="text-gray-200 antialiased p-4 md:p-8">
+<body class="antialiased p-6 md:p-12">
 
     <div class="max-w-6xl mx-auto">
-        <!-- Header -->
-        <header class="flex justify-between items-end mb-8 animate-fade-in-up border-b border-white/5 pb-6">
-            <div>
-                <p class="text-xs font-mono text-blue-500 uppercase tracking-widest mb-2 font-bold">每日情报摘要</p>
-                <h1 class="text-3xl md:text-5xl font-extrabold tracking-tight text-white">Feb 02</h1>
-            </div>
-            <div class="text-right hidden md:block">
-                <div class="text-sm text-gray-400">中国 · 深圳</div>
-                <div class="flex gap-4 justify-end text-xs font-mono text-gray-600 mt-1">
-                    <span>ID: SESS-CN-001</span>
-                    <a href="archive/index.html" class="text-blue-500 hover:text-blue-400 hover:underline transition-colors">历史归档</a>
-                </div>
+        
+        <!-- Minimal Header -->
+        <header class="mb-12 flex justify-between items-end">
+            <h1 class="text-6xl md:text-8xl font-bold tracking-tighter text-white opacity-90 leading-none">
+                Feb 02
+            </h1>
+            <div class="hidden md:block pb-2">
+                 <a href="archive/index.html" class="text-xs text-gray-500 hover:text-white transition-colors uppercase tracking-widest border border-gray-800 px-3 py-1 rounded-full">
+                    History
+                </a>
             </div>
         </header>
 
-        <!-- Bento Grid Layout -->
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 auto-rows-min">
+        <!-- Layout -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
             
-            <!-- Weather Widget (1x1) -->
-            <div class="glass-card rounded-2xl p-6 flex flex-col justify-between animate-fade-in-up animate-delay-100 md:col-span-1 h-48 relative overflow-hidden group bg-gradient-to-br from-blue-900/20 to-transparent">
-                <div class="absolute -right-6 -top-6 w-24 h-24 bg-blue-500 rounded-full blur-3xl opacity-20 group-hover:opacity-30 transition-opacity"></div>
-                <div>
-                    <div class="text-gray-400 text-xs font-mono mb-1 tracking-wider">今日天气</div>
-                    <div class="text-3xl font-bold text-white tracking-tight">23°C</div>
+            <!-- Hero News (占据左侧 2列 2行) -->
+            <!-- 强制设置高度，确保图片展示 -->
+            <div class="bento-card md:col-span-2 md:row-span-2 relative overflow-hidden group min-h-[400px] flex flex-col justify-end">
+                <!-- 图片层 -->
+                <div class="absolute inset-0 z-0">
+                    <img src="https://images.unsplash.com/photo-1614633785233-0c464402a5c1?q=80&w=1600&auto=format&fit=crop" alt="Cover" class="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105 opacity-80">
                 </div>
-                <div>
-                    <div class="text-sm font-medium text-blue-100">多云</div>
-                    <div class="text-xs text-gray-400 mt-2 leading-relaxed border-t border-white/5 pt-2">湿度 88%，体感闷热，南山区可能有零星小雨。</div>
+                <!-- 遮罩层 -->
+                <div class="absolute inset-0 hero-gradient z-10"></div>
+                
+                <!-- 内容层 -->
+                <div class="relative z-20 p-8">
+                    <div class="flex items-center gap-2 mb-3 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <span class="text-[10px] font-medium bg-white text-black px-2 py-0.5 rounded-sm">TOP STORY</span>
+                        <span class="text-[10px] text-gray-300">RTL Today / DeepMind</span>
+                    </div>
+                    
+                    <a href="https://today.rtl.lu/news/business-and-tech/social-media-for-ai-agents-striking-health-advancements-and-stark-warning-from-leading-figure-1593054301" target="_blank" class="block group-hover:opacity-100 transition-opacity">
+                        <h2 class="text-2xl md:text-3xl font-bold text-white leading-tight mb-3 tracking-tight">
+                            DeepMind 发布 AlphaGenome：AI 破译 DNA 及其调控机制
+                        </h2>
+                        <p class="text-gray-400 text-sm leading-relaxed line-clamp-3 md:line-clamp-none max-w-md">
+                            Google DeepMind 正式推出 AlphaGenome，这是一款能分析超长 DNA 序列的高级 AI 模型。它能预测基因变异如何影响基因调控，有望大幅加速基因组学研究和新药研发进程。
+                        </p>
+                    </a>
                 </div>
             </div>
 
-            <!-- Market Widget (1x1) -->
-            <div class="glass-card rounded-2xl p-6 flex flex-col justify-between animate-fade-in-up animate-delay-100 md:col-span-1 h-48">
-                <div class="flex justify-between items-center mb-2">
-                    <div class="text-gray-400 text-xs font-mono tracking-wider">市场脉搏</div>
-                    <div class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></div>
+            <!-- Weather (1x1) -->
+            <div class="bento-card p-6 flex flex-col justify-between h-48">
+                <div class="flex justify-between items-start">
+                    <span class="text-xs text-gray-500 uppercase tracking-wider font-medium">SHENZHEN</span>
+                    <span class="text-2xl opacity-50">🌥️</span>
                 </div>
-                <div class="space-y-3 flex-1 flex flex-col justify-center">
+                <div>
+                    <div class="text-4xl font-light text-white mb-1">23°C</div>
+                    <div class="text-xs text-gray-500 leading-snug">湿度 88%，体感闷热，南山区可能有零星小雨。</div>
+                </div>
+            </div>
+
+            <!-- Market (1x1) -->
+            <div class="bento-card p-6 flex flex-col justify-between h-48">
+                <span class="text-xs text-gray-500 uppercase tracking-wider font-medium">MARKETS</span>
+                <div class="space-y-4">
                     
     <div class="flex justify-between items-center py-1 border-b border-white/5 last:border-0">
         <span class="font-bold text-sm text-gray-300">NVDA (英伟达)</span>
@@ -118,41 +130,12 @@
     </div>
     
                 </div>
-                <div class="text-[10px] text-gray-600 mt-2 font-mono">美股 · 实时行情</div>
             </div>
 
-            <!-- Hero News (Level 1) (2x2) - With Image -->
-            <div class="glass-card rounded-2xl md:col-span-2 md:row-span-2 flex flex-col justify-end relative overflow-hidden animate-fade-in-up animate-delay-200 group h-[400px] md:h-auto">
-                <!-- Dynamic Background Image -->
-                <div class="absolute inset-0 bg-gray-900 z-0 transition-transform duration-700 group-hover:scale-105">
-                    <img src="https://images.unsplash.com/photo-1530026405186-ed1f139313f8?q=80&w=2500&auto=format&fit=crop" alt="Hero" class="w-full h-full object-cover opacity-60 mix-blend-overlay">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black via-black/80 to-transparent"></div>
-                </div>
-                
-                <div class="relative z-10 p-8">
-                    <div class="flex items-center gap-3 mb-4">
-                        <span class="px-2 py-0.5 bg-blue-600/90 backdrop-blur-sm text-white text-[10px] font-bold uppercase tracking-wider rounded shadow-lg shadow-blue-900/50">今日头条</span>
-                        <span class="text-xs text-gray-300 font-mono tracking-tight bg-black/30 px-2 py-0.5 rounded backdrop-blur-md">RTL Today / DeepMind</span>
-                    </div>
-                    <h2 class="text-2xl md:text-3xl font-bold text-white leading-tight mb-4 tracking-tight drop-shadow-lg">
-                        <a href="https://today.rtl.lu/news/business-and-tech/social-media-for-ai-agents-striking-health-advancements-and-stark-warning-from-leading-figure-1593054301" target="_blank" class="hover:text-blue-400 transition-colors">DeepMind 发布 AlphaGenome：AI 破译 DNA 及其调控机制</a>
-                    </h2>
-                    <p class="text-gray-300 text-sm md:text-base line-clamp-3 mb-4 leading-relaxed max-w-lg drop-shadow-md">
-                        Google DeepMind 正式推出 AlphaGenome，这是一款能分析超长 DNA 序列的高级 AI 模型。它能预测基因变异如何影响基因调控，有望大幅加速基因组学研究和新药研发进程。
-                    </p>
-                    
-                    <a href="https://today.rtl.lu/news/business-and-tech/social-media-for-ai-agents-striking-health-advancements-and-stark-warning-from-leading-figure-1593054301" target="_blank" class="inline-flex items-center text-xs text-blue-400 font-medium hover:text-blue-300 transition-colors uppercase tracking-widest group/link">
-                        阅读全文 <span class="ml-1 transform group-hover/link:translate-x-1 transition-transform">→</span>
-                    </a>
-                </div>
-            </div>
-
-            <!-- Secondary News List (Level 2/3) (2x1) -->
-            <div class="glass-card rounded-2xl p-6 md:col-span-2 animate-fade-in-up animate-delay-300">
-                <div class="text-gray-400 text-xs font-mono mb-5 flex justify-between items-center border-b border-white/5 pb-3">
-                    <span class="tracking-wider">情报雷达</span>
-                    <span class="text-[10px] bg-white/5 px-2 py-0.5 rounded text-gray-500">2026.02.02</span>
-                </div>
+            <!-- Secondary List (2x1 纵向长条 或者 2x1 横向) -->
+            <!-- 这里为了布局平衡，我们让它占据右下角 -->
+            <div class="bento-card p-6 md:col-span-2 flex flex-col justify-center">
+                <span class="text-xs text-gray-500 uppercase tracking-wider font-medium mb-4 block">BRIEFING</span>
                 <div class="space-y-1">
                     
     <a href="https://finance.yahoo.com/news/softbank-talks-invest-30-billion-040911146.html" target="_blank" class="block group flex items-start gap-3 p-3 rounded-lg hover:bg-white/5 transition-colors no-underline">
@@ -202,14 +185,14 @@
                 </div>
             </div>
 
-            <!-- Footer / Stats (4x1) -->
-            <div class="md:col-span-4 mt-8 text-center pb-8 opacity-40 hover:opacity-100 transition-opacity duration-500">
-                <p class="text-[10px] font-mono text-gray-600 tracking-widest">
-                    SYSTEM: ONLINE · VER 3.0 · DESIGNED FOR C
-                </p>
-            </div>
-            
         </div>
+        
+        <!-- Footer -->
+        <footer class="mt-16 border-t border-gray-900 pt-8 flex justify-between text-[10px] text-gray-600 font-mono uppercase">
+            <span>2026.02.02 · DAILY INTELLIGENCE</span>
+            <span>ID: SESS-CN-001</span>
+        </footer>
+
     </div>
 
 </body>

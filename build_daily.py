@@ -215,20 +215,18 @@ def build():
     html = html.replace("{{HERO_URL}}", hero.get("url", "#"))
     
     # 图片逻辑
-    # 使用 Pollinations AI 根据关键词生成即时图片，或者使用精选的高清图
-    keyword = hero.get("image_keyword", "artificial intelligence abstract")
-    # URL 编码 keyword
-    import urllib.parse
-    encoded_keyword = urllib.parse.quote(keyword)
-    # image_url = f"https://image.pollinations.ai/prompt/{encoded_keyword}?width=800&height=600&nologo=true"
-    # 或者使用 Unsplash 的特定图片 (更稳定，更专业)
-    # 这里我们根据关键词简单映射几张高质量图，避免生成图的不可控
-    if "dna" in keyword.lower():
-        image_url = "https://images.unsplash.com/photo-1530026405186-ed1f139313f8?q=80&w=2500&auto=format&fit=crop" # DNA
+    # 使用确定的静态 URL 以保证加载
+    keyword = hero.get("image_keyword", "technology")
+    
+    if "dna" in keyword.lower() or "bio" in keyword.lower():
+        # 深色 DNA 螺旋
+        image_url = "https://images.unsplash.com/photo-1614633785233-0c464402a5c1?q=80&w=1600&auto=format&fit=crop"
     elif "chip" in keyword.lower() or "nvidia" in keyword.lower():
-        image_url = "https://images.unsplash.com/photo-1555664424-778a69032084?q=80&w=2500&auto=format&fit=crop" # Chip
+        # 芯片微距
+        image_url = "https://images.unsplash.com/photo-1591799264318-7e6ef8ddb7ea?q=80&w=1600&auto=format&fit=crop"
     else:
-        image_url = "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=2500&auto=format&fit=crop" # AI Abstract
+        # 深色抽象光影
+        image_url = "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&w=1600&auto=format&fit=crop"
 
     html = html.replace("{{HERO_IMAGE_URL}}", image_url)
     
