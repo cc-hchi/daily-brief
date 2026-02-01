@@ -16,10 +16,10 @@
   ],
   "secondary_news": [
     {
-      "title": "SoftBank Dumps $5.8B Nvidia Stake to Fund OpenAI Investment",
-      "source": "MarketBeat / Wiki",
-      "url": "https://en.wikipedia.org/wiki/Nvidia",
-      "time": "7h ago"
+      "title": "SoftBank Dumps Entire Nvidia Stake to Fund $30B OpenAI Bet",
+      "source": "Yahoo Finance",
+      "url": "https://finance.yahoo.com/news/softbank-talks-invest-30-billion-040911146.html",
+      "time": "4d ago"
     },
     {
       "title": "Alphabet Seeks $16B Funding for Waymo at $110B Valuation",
@@ -28,10 +28,10 @@
       "time": "13m ago"
     },
     {
-      "title": "OpenAI o1 Reasoning Model Continues to Gain Traction",
-      "source": "Wikipedia",
-      "url": "https://en.wikipedia.org/wiki/Large_language_model",
-      "time": "1d ago"
+      "title": "OpenAI o1: Learning to Reason with Chain of Thought",
+      "source": "OpenAI Research",
+      "url": "https://openai.com/index/learning-to-reason-with-llms/",
+      "time": "Insight"
     }
   ],
   "session_id": "SESS-LIVE-002"
