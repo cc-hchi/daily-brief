@@ -2,7 +2,7 @@
   "weather": {
     "temp": "23°C",
     "cond": "Cloudy",
-    "advice": "High humidity today. Chance of light rain in Nanshan."
+    "advice": "High humidity (88%). Expect light rain in Nanshan later today."
   },
   "hero_news": {
     "title": "DeepMind Unveils AlphaGenome: AI Breakthrough in DNA Analysis",
@@ -11,8 +11,8 @@
     "summary": "Google's DeepMind has formally unveiled AlphaGenome, an advanced AI designed to analyze long stretches of DNA. It predicts how genetic variants influence gene regulation, promising to accelerate genomics research and new medicine production."
   },
   "stocks": [
-    {"symbol": "NVDA", "price": "$121.4", "change": "-2.0%", "trend": "down"},
-    {"symbol": "GOOG", "price": "$173.8", "change": "+0.5%", "trend": "up"}
+    {"symbol": "NVDA", "price": "$192.00", "change": "+1.85% (Pre)", "trend": "up"},
+    {"symbol": "GOOG", "price": "$338.20", "change": "-0.10% (After)", "trend": "down"}
   ],
   "secondary_news": [
     {
@@ -22,17 +22,17 @@
       "time": "7h ago"
     },
     {
+      "title": "Alphabet Seeks $16B Funding for Waymo at $110B Valuation",
+      "source": "Yahoo Finance",
+      "url": "https://finance.yahoo.com/quote/GOOG/",
+      "time": "13m ago"
+    },
+    {
       "title": "OpenAI o1 Reasoning Model Continues to Gain Traction",
       "source": "Wikipedia",
       "url": "https://en.wikipedia.org/wiki/Large_language_model",
       "time": "1d ago"
-    },
-    {
-      "title": "OxygenOS 16 Features Leaked: What You Must Know",
-      "source": "Gadgets 360",
-      "url": "https://www.gadgets360.com/news",
-      "time": "12h ago"
     }
   ],
-  "session_id": "SESS-LIVE-001"
+  "session_id": "SESS-LIVE-002"
 }
