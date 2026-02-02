@@ -1,39 +1,32 @@
 {
-  "weather": {
-    "temp": "23°C",
-    "cond": "多云",
-    "advice": "湿度 88%，体感闷热，南山区可能有零星小雨。"
-  },
-  "hero_news": {
-    "title": "DeepMind 发布 AlphaGenome：AI 破译 DNA 及其调控机制",
-    "source": "RTL Today / DeepMind",
-    "url": "https://today.rtl.lu/news/business-and-tech/social-media-for-ai-agents-striking-health-advancements-and-stark-warning-from-leading-figure-1593054301",
-    "summary": "Google DeepMind 正式推出 AlphaGenome，这是一款能分析超长 DNA 序列的高级 AI 模型。它能预测基因变异如何影响基因调控，有望大幅加速基因组学研究和新药研发进程。",
-    "image_keyword": "dna helix abstract technology"
-  },
-  "stocks": [
-    {"symbol": "NVDA (英伟达)", "price": "$192.00", "change": "+1.85% (盘前)", "trend": "up"},
-    {"symbol": "GOOG (谷歌)", "price": "$338.20", "change": "-0.10% (盘后)", "trend": "down"}
-  ],
-  "secondary_news": [
+  "date": "2026-02-02",
+  "ai_highlights": [
     {
-      "title": "软银抛售 58 亿美元英伟达持仓，转而押注 OpenAI",
-      "source": "Yahoo 财经",
-      "url": "https://finance.yahoo.com/news/softbank-talks-invest-30-billion-040911146.html",
-      "time": "4天前"
+      "headline": "Nvidia confirms major investment in OpenAI's latest funding round",
+      "summary": "Nvidia CEO Jensen Huang announced the company will participate in OpenAI's new funding round, describing it as potentially the 'largest investment we've ever made.' This underscores the deepening ties between the hardware giant and the leading AI lab."
     },
     {
-      "title": "Alphabet 寻求为 Waymo 融资 160 亿美元，估值冲刺 1100 亿",
-      "source": "Yahoo 财经",
-      "url": "https://finance.yahoo.com/quote/GOOG/",
-      "time": "30分钟前"
-    },
-    {
-      "title": "OpenAI o1 深度解析：思维链 (CoT) 如何重塑推理能力",
-      "source": "OpenAI 研究中心",
-      "url": "https://openai.com/index/learning-to-reason-with-llms/",
-      "time": "深度洞察"
+      "headline": "AI Data Center growth sparks environmental concerns",
+      "summary": "New reports highlight the environmental cost of the AI boom, with data center energy demands projected to grow 160% by 2030. Major tech companies are facing challenges in meeting climate pledges due to the explosive expansion of infrastructure."
     }
   ],
-  "session_id": "SESS-CN-001"
+  "market_watch": {
+    "summary": "Tech sector focused on strategic AI investments and policy shifts.",
+    "items": [
+      {
+        "symbol": "NVDA",
+        "news": "CEO Jensen Huang confirms participation in OpenAI's latest funding round, signaling a massive capital deployment into the AI ecosystem."
+      },
+      {
+        "symbol": "GOOG",
+        "news": "Google and other cloud giants set to benefit from India's proposed tax holiday for global cloud providers in the 2026-27 Union Budget."
+      }
+    ]
+  },
+  "global_tech": [
+    {
+      "headline": "India proposes tax holiday for global cloud providers",
+      "summary": "The Union Budget 2026-27 includes a proposal for a tax holiday until 2047 for global cloud service providers like Microsoft, Google, and Amazon, aiming to boost India-based data center operations."
+    }
+  ]
 }
