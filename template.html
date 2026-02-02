@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="dark">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
@@ -9,10 +9,32 @@
     <script>
         tailwind.config = {
             darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        background: '#0a0a0a',
+                        surface: '#171717',
+                        border: '#262626',
+                    }
+                }
+            }
         }
     </script>
+    <style>
+        /* Force Dark Mode defaults regardless of Tailwind loading */
+        body {
+            background-color: #0a0a0a !important;
+            color: #e5e5e5 !important;
+            font-family: 'Inter', sans-serif;
+        }
+        .card {
+            background-color: #171717;
+            border: 1px solid #262626;
+            border-radius: 1rem;
+        }
+    </style>
 </head>
-<body class="bg-neutral-950 text-neutral-200 antialiased p-4 md:p-8 max-w-3xl mx-auto pb-24 font-[Inter]">
+<body class="antialiased p-4 md:p-8 max-w-3xl mx-auto pb-24">
 
     <!-- Header -->
     <header class="flex justify-between items-end mb-8">
@@ -32,7 +54,7 @@
     <div class="space-y-4">
         
         <!-- Hero Card -->
-        <div class="bg-neutral-900 border border-neutral-800 rounded-2xl p-6 relative overflow-hidden group">
+        <div class="card p-6 relative overflow-hidden group">
              <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity text-white">
                 <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
              </div>
@@ -53,7 +75,7 @@
         <!-- 2-Col Grid for Metrics -->
         <div class="grid grid-cols-2 gap-4">
             <!-- Weather -->
-            <div class="bg-neutral-900 border border-neutral-800 rounded-2xl p-5 flex flex-col justify-between">
+            <div class="card p-5 flex flex-col justify-between">
                 <div class="flex justify-between items-start mb-2">
                     <span class="text-[10px] font-mono text-neutral-500 uppercase tracking-wider">Shenzhen</span>
                     <span class="text-xl text-neutral-200">{{WEATHER_COND}}</span>
@@ -67,7 +89,7 @@
             </div>
 
             <!-- Market -->
-            <div class="bg-neutral-900 border border-neutral-800 rounded-2xl p-4 space-y-2">
+            <div class="card p-4 space-y-2">
                 <div class="flex justify-between items-center mb-1 pb-2 border-b border-neutral-800">
                     <span class="text-[10px] font-mono text-neutral-500 uppercase tracking-wider">Markets</span>
                     <div class="flex gap-1">
@@ -80,7 +102,7 @@
         </div>
 
         <!-- Secondary News -->
-        <div class="bg-neutral-900 border border-neutral-800 rounded-2xl p-1">
+        <div class="card p-1">
              <div class="px-4 py-3 border-b border-neutral-800 flex items-center gap-2">
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-neutral-500"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
                 <span class="text-[10px] font-mono text-neutral-500 uppercase tracking-wider">Briefing Stream</span>
