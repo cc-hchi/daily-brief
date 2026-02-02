@@ -24,55 +24,35 @@ def load_template():
 
 def render_secondary_item(item):
     return f"""
-    <a href="{item['url']}" target="_blank" class="group relative flex flex-col gap-1.5 p-4 rounded-xl hover:bg-white/5 border border-transparent hover:border-white/5 transition-all duration-300">
-        <div class="flex items-center justify-between">
-            <span class="text-[9px] font-bold tracking-widest text-blue-400 uppercase bg-blue-500/10 px-1.5 py-0.5 rounded">{item['source']}</span>
-            <span class="text-[10px] text-gray-600 font-mono group-hover:text-gray-500 transition-colors">{item['time']}</span>
+    <a href="{item['url']}" target="_blank" class="block p-4 hover:bg-white/5 transition-colors group">
+        <div class="flex items-center justify-between mb-1">
+            <span class="text-[9px] font-bold text-blue-400/80 uppercase tracking-wider">{item['source']}</span>
+            <span class="text-[10px] font-mono text-neutral-500">{item['time']}</span>
         </div>
-        <h4 class="text-sm font-medium text-gray-200 group-hover:text-white leading-snug transition-colors pr-4">
+        <h3 class="text-sm font-medium text-gray-200 group-hover:text-white leading-snug">
             {item['title']}
-        </h4>
-        <div class="absolute right-4 top-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M7 17L17 7"></path><path d="M7 7h10v10"></path></svg>
-        </div>
+        </h3>
     </a>
     """
 
 def render_stock_item(stock):
     trend = stock.get('trend', 'neutral')
     
-    # Trend styles
     if trend == 'up':
-        bg_class = "bg-emerald-500/10"
-        text_class = "text-emerald-400"
-        icon = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>'
+        color_class = "text-emerald-400"
     elif trend == 'down':
-        bg_class = "bg-rose-500/10"
-        text_class = "text-rose-400"
-        icon = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"></polyline><polyline points="17 18 23 18 23 12"></polyline></svg>'
+        color_class = "text-rose-400"
     else:
-        bg_class = "bg-gray-500/10"
-        text_class = "text-gray-400"
-        icon = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line></svg>'
+        color_class = "text-neutral-400"
     
     return f"""
-    <div class="group flex items-center justify-between p-3 rounded-lg hover:bg-white/5 transition-colors border border-transparent hover:border-white/5">
-        <div class="flex items-center gap-3">
-            <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-[10px] font-bold text-gray-400 group-hover:text-white transition-colors">
-                {stock['symbol'][0]}
-            </div>
-            <div class="flex flex-col">
-                <span class="text-sm font-bold text-gray-200 group-hover:text-white">{stock['symbol']}</span>
-                <span class="text-[10px] text-gray-500 font-mono">MARKET</span>
-            </div>
+    <div class="flex items-center justify-between py-1 group">
+        <div class="flex items-center gap-2">
+            <span class="text-xs font-bold text-gray-300 w-10">{stock['symbol']}</span>
         </div>
-        
-        <div class="flex flex-col items-end">
-            <span class="text-sm font-medium text-white font-mono tracking-tight">{stock['price']}</span>
-            <div class="flex items-center gap-1 mt-0.5">
-                <span class="{text_class}">{icon}</span>
-                <span class="text-[10px] font-mono {text_class} {bg_class} px-1.5 py-0.5 rounded-sm">{stock['change']}</span>
-            </div>
+        <div class="flex items-center gap-2">
+            <span class="text-xs font-mono text-gray-400">{stock['price']}</span>
+            <span class="text-[10px] font-mono {color_class} bg-white/5 px-1 rounded">{stock['change']}</span>
         </div>
     </div>
     """
