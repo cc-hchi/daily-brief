@@ -2,31 +2,31 @@
   "date": "2026-02-02",
   "ai_highlights": [
     {
-      "headline": "Nvidia confirms major investment in OpenAI's latest funding round",
-      "summary": "Nvidia CEO Jensen Huang announced the company will participate in OpenAI's new funding round, describing it as potentially the 'largest investment we've ever made.' This underscores the deepening ties between the hardware giant and the leading AI lab."
+      "headline": "Alphabet pursuing $16 billion funding for Waymo",
+      "summary": "Alphabet is reportedly seeking a massive $16 billion funding round for its self-driving unit Waymo, aiming for a valuation of $110 billion, highlighting continued confidence in autonomous driving AI."
     },
     {
-      "headline": "AI Data Center growth sparks environmental concerns",
-      "summary": "New reports highlight the environmental cost of the AI boom, with data center energy demands projected to grow 160% by 2030. Major tech companies are facing challenges in meeting climate pledges due to the explosive expansion of infrastructure."
+      "headline": "Google's Project Genie attracts gaming industry interest",
+      "summary": "Google's generative AI initiative, Project Genie, is gaining traction in the gaming sector, potentially transforming how interactive environments and assets are created."
     }
   ],
   "market_watch": {
-    "summary": "Tech sector focused on strategic AI investments and policy shifts.",
+    "summary": "AI hardware and autonomous driving investments drive market sentiment.",
     "items": [
       {
         "symbol": "NVDA",
-        "news": "CEO Jensen Huang confirms participation in OpenAI's latest funding round, signaling a massive capital deployment into the AI ecosystem."
+        "news": "Stock at $188.52. Nvidia is poised for growth as it reportedly receives approval to sell H200 AI accelerators in China. Earnings report scheduled for Feb 25."
       },
       {
         "symbol": "GOOG",
-        "news": "Google and other cloud giants set to benefit from India's proposed tax holiday for global cloud providers in the 2026-27 Union Budget."
+        "news": "Stock at $338.53. Focus on Waymo's potential $110B valuation and momentum around Gemini and Project Genie."
       }
     ]
   },
   "global_tech": [
     {
-      "headline": "India proposes tax holiday for global cloud providers",
-      "summary": "The Union Budget 2026-27 includes a proposal for a tax holiday until 2047 for global cloud service providers like Microsoft, Google, and Amazon, aiming to boost India-based data center operations."
+      "headline": "Nvidia to resume major chip sales in China",
+      "summary": "Approvals for selling H200 AI accelerators in China could significantly enhance Nvidia's revenue projections and ease geopolitical supply chain tensions."
     }
   ]
 }
