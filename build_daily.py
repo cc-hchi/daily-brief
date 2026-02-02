@@ -24,31 +24,55 @@ def load_template():
 
 def render_secondary_item(item):
     return f"""
-    <a href="{item['url']}" target="_blank" class="block group flex items-start gap-3 p-3 rounded-lg hover:bg-white/5 transition-colors no-underline">
-        <div class="mt-1.5 min-w-[4px] h-[4px] rounded-full bg-blue-500 group-hover:bg-blue-400"></div>
-        <div class="flex-1">
-            <h4 class="text-sm font-medium text-gray-200 group-hover:text-blue-300 transition-colors leading-snug">
-                {item['title']}
-            </h4>
-            <div class="flex items-center gap-2 mt-1.5">
-                <span class="text-[10px] text-gray-500 font-mono uppercase">{item['source']}</span>
-                <span class="text-[10px] text-gray-600">·</span>
-                <span class="text-[10px] text-gray-500">{item['time']}</span>
-            </div>
+    <a href="{item['url']}" target="_blank" class="group relative flex flex-col gap-1.5 p-4 rounded-xl hover:bg-white/5 border border-transparent hover:border-white/5 transition-all duration-300">
+        <div class="flex items-center justify-between">
+            <span class="text-[9px] font-bold tracking-widest text-blue-400 uppercase bg-blue-500/10 px-1.5 py-0.5 rounded">{item['source']}</span>
+            <span class="text-[10px] text-gray-600 font-mono group-hover:text-gray-500 transition-colors">{item['time']}</span>
+        </div>
+        <h4 class="text-sm font-medium text-gray-200 group-hover:text-white leading-snug transition-colors pr-4">
+            {item['title']}
+        </h4>
+        <div class="absolute right-4 top-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M7 17L17 7"></path><path d="M7 7h10v10"></path></svg>
         </div>
     </a>
     """
 
 def render_stock_item(stock):
     trend = stock.get('trend', 'neutral')
-    color_class = "text-green-400 bg-green-400/10" if trend == 'up' else ("text-red-400 bg-red-400/10" if trend == 'down' else "text-gray-400 bg-gray-400/10")
+    
+    # Trend styles
+    if trend == 'up':
+        bg_class = "bg-emerald-500/10"
+        text_class = "text-emerald-400"
+        icon = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>'
+    elif trend == 'down':
+        bg_class = "bg-rose-500/10"
+        text_class = "text-rose-400"
+        icon = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"></polyline><polyline points="17 18 23 18 23 12"></polyline></svg>'
+    else:
+        bg_class = "bg-gray-500/10"
+        text_class = "text-gray-400"
+        icon = '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line></svg>'
     
     return f"""
-    <div class="flex justify-between items-center py-1 border-b border-white/5 last:border-0">
-        <span class="font-bold text-sm text-gray-300">{stock['symbol']}</span>
-        <div class="flex items-center gap-2">
-            <span class="text-xs text-gray-500">{stock['price']}</span>
-            <span class="font-mono text-[10px] {color_class} px-1.5 py-0.5 rounded">{stock['change']}</span>
+    <div class="group flex items-center justify-between p-3 rounded-lg hover:bg-white/5 transition-colors border border-transparent hover:border-white/5">
+        <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-[10px] font-bold text-gray-400 group-hover:text-white transition-colors">
+                {stock['symbol'][0]}
+            </div>
+            <div class="flex flex-col">
+                <span class="text-sm font-bold text-gray-200 group-hover:text-white">{stock['symbol']}</span>
+                <span class="text-[10px] text-gray-500 font-mono">MARKET</span>
+            </div>
+        </div>
+        
+        <div class="flex flex-col items-end">
+            <span class="text-sm font-medium text-white font-mono tracking-tight">{stock['price']}</span>
+            <div class="flex items-center gap-1 mt-0.5">
+                <span class="{text_class}">{icon}</span>
+                <span class="text-[10px] font-mono {text_class} {bg_class} px-1.5 py-0.5 rounded-sm">{stock['change']}</span>
+            </div>
         </div>
     </div>
     """

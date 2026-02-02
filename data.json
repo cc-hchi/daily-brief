@@ -1,32 +1,66 @@
 {
   "date": "2026-02-02",
-  "ai_highlights": [
+  "weather": {
+    "temp": "+15°C",
+    "cond": "Sunny",
+    "advice": "Humidity is moderate (53%) with a gentle breeze. Weather is comfortable, suitable for outdoor activities."
+  },
+  "hero_news": {
+    "title": "Alphabet Seeks $16B for Waymo at $110B Valuation",
+    "source": "Yahoo Finance",
+    "summary": "Alphabet is reportedly pursuing a massive $16 billion funding round for its self-driving unit Waymo, aiming for a valuation of $110 billion. This move underscores continued confidence in autonomous driving AI despite market fluctuations.",
+    "url": "https://finance.yahoo.com/quote/GOOG/"
+  },
+  "stocks": [
     {
-      "headline": "Alphabet pursuing $16 billion funding for Waymo",
-      "summary": "Alphabet is reportedly seeking a massive $16 billion funding round for its self-driving unit Waymo, aiming for a valuation of $110 billion, highlighting continued confidence in autonomous driving AI."
+      "symbol": "NVDA",
+      "price": "$188.52",
+      "change": "+1.10%",
+      "trend": "up"
     },
     {
-      "headline": "Google's Project Genie attracts gaming industry interest",
-      "summary": "Google's generative AI initiative, Project Genie, is gaining traction in the gaming sector, potentially transforming how interactive environments and assets are created."
+      "symbol": "GOOG",
+      "price": "$338.53",
+      "change": "-0.04%",
+      "trend": "neutral"
+    },
+    {
+      "symbol": "BTC",
+      "price": "$103,420",
+      "change": "+2.1%",
+      "trend": "up"
     }
   ],
-  "market_watch": {
-    "summary": "AI hardware and autonomous driving investments drive market sentiment.",
-    "items": [
-      {
-        "symbol": "NVDA",
-        "news": "Stock at $188.52. Nvidia is poised for growth as it reportedly receives approval to sell H200 AI accelerators in China. Earnings report scheduled for Feb 25."
-      },
-      {
-        "symbol": "GOOG",
-        "news": "Stock at $338.53. Focus on Waymo's potential $110B valuation and momentum around Gemini and Project Genie."
-      }
-    ]
-  },
-  "global_tech": [
+  "secondary_news": [
     {
-      "headline": "Nvidia to resume major chip sales in China",
-      "summary": "Approvals for selling H200 AI accelerators in China could significantly enhance Nvidia's revenue projections and ease geopolitical supply chain tensions."
+      "title": "Google's 'Project Genie' Gains Traction in Gaming",
+      "source": "Yahoo Finance",
+      "time": "Today",
+      "url": "https://finance.yahoo.com/quote/GOOG/"
+    },
+    {
+      "title": "Nvidia Poised for China H200 Chip Sales Approval",
+      "source": "Yahoo Finance",
+      "time": "Today",
+      "url": "https://finance.yahoo.com/quote/NVDA/"
+    },
+    {
+      "title": "Trump Threatens Tariffs on Mexico Over Cuba Oil",
+      "source": "CNN",
+      "time": "Today",
+      "url": "https://edition.cnn.com/2026/01/30/americas/cuba-oil-supply-trump-tariff-mexico-latam-intl"
+    },
+    {
+      "title": "Iran FM Optimistic on Talks Despite US Military Buildup",
+      "source": "CNN",
+      "time": "Today",
+      "url": "https://edition.cnn.com/2026/02/01/middleeast/iran-diplomat-araghchi-interview-intl"
+    },
+    {
+      "title": "AI 'Schoolgirl' Meme Growing in Far-Right Circles",
+      "source": "CNN",
+      "time": "Today",
+      "url": "https://edition.cnn.com/2026/01/31/uk/amelia-meme-ai-far-right-intl-scli"
     }
   ]
 }

@@ -1,25 +1,24 @@
 <!DOCTYPE html>
-<html lang="zh-CN" class="dark">
+<html lang="en" class="dark selection:bg-blue-500/30">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Intelligence</title>
+    <title>Intelligence | Daily Brief</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Inter', 'Noto Sans SC', 'sans-serif'],
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
                     },
                     colors: {
-                        dark: {
-                            bg: '#0a0a0a',
-                            card: '#121212',
-                            border: '#2a2a2a'
-                        }
+                        page: '#030303',
+                        card: '#0A0A0A',
+                        stroke: '#1F1F1F',
                     }
                 }
             }
@@ -27,114 +26,305 @@
     </script>
     <style>
         body {
-            background-color: #050505;
+            background-color: theme('colors.page');
             color: #e5e5e5;
             min-height: 100vh;
         }
-        .bento-card {
-            background-color: #111111;
-            border: 1px solid #222;
-            border-radius: 16px;
-            transition: all 0.3s ease;
+        
+        /* Subtle Noise Texture */
+        .noise-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 50;
+            opacity: 0.03;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
-        .bento-card:hover {
-            border-color: #333;
-            transform: translateY(-1px);
+
+        .glass-card {
+            background-color: rgba(10, 10, 10, 0.6);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 0 0 1px rgba(0,0,0,1), 0 4px 12px rgba(0,0,0,0.5);
+        }
+
+        /* Hero Gradient Animation */
+        .mesh-gradient {
+            background: radial-gradient(at 0% 0%, rgba(59, 130, 246, 0.15) 0px, transparent 50%),
+                        radial-gradient(at 100% 100%, rgba(147, 51, 234, 0.1) 0px, transparent 50%);
+            opacity: 0.6;
+            transition: opacity 0.5s ease;
         }
         
-        /* 动态极光渐变 */
-        .aurora-bg {
-            background: linear-gradient(-45deg, #0f172a, #1e1b4b, #312e81, #1e1b4b);
-            background-size: 400% 400%;
-            animation: gradient 15s ease infinite;
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 1.5rem;
         }
         
-        @keyframes gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        @media (min-width: 768px) {
+            .bento-grid {
+                grid-template-columns: repeat(4, 1fr);
+                grid-template-rows: repeat(2, minmax(280px, auto));
+            }
+            .col-span-2 { grid-column: span 2; }
+            .row-span-2 { grid-row: span 2; }
         }
+
+        /* Typography Utilities */
+        .text-balance { text-wrap: balance; }
     </style>
 </head>
-<body class="antialiased p-6 md:p-12">
+<body class="antialiased font-sans p-6 md:p-12 lg:p-16 flex flex-col items-center">
+    
+    <div class="noise-bg"></div>
 
-    <div class="max-w-6xl mx-auto">
+    <div class="w-full max-w-[1200px] z-10">
         
-        <!-- Minimal Header -->
-        <header class="mb-12 flex justify-between items-end">
-            <h1 class="text-6xl md:text-8xl font-bold tracking-tighter text-white opacity-90 leading-none">
-                Feb 02
-            </h1>
-            <div class="hidden md:block pb-2">
-                 <a href="index.html" class="text-xs text-gray-500 hover:text-white transition-colors uppercase tracking-widest border border-gray-800 px-3 py-1 rounded-full">
-                    History
+        <!-- Header -->
+        <header class="flex flex-col md:flex-row justify-between md:items-end mb-12 gap-6">
+            <div>
+                <div class="flex items-center gap-3 mb-2">
+                    <div class="w-2 h-2 bg-blue-500 rounded-full animate-pulse"></div>
+                    <span class="text-xs font-mono text-gray-500 uppercase tracking-widest">System Online</span>
+                </div>
+                <h1 class="text-5xl md:text-7xl font-semibold tracking-tighter text-white leading-none">
+                    Feb 02
+                </h1>
+            </div>
+            
+            <div class="flex flex-col items-start md:items-end gap-2">
+                <span class="text-xs font-mono text-gray-600 uppercase tracking-widest">2026.02.02</span>
+                <a href="index.html" class="group flex items-center gap-2 text-xs font-medium text-gray-400 hover:text-white transition-colors px-3 py-1.5 rounded-full border border-white/5 hover:border-white/10 hover:bg-white/5">
+                    <span>ARCHIVE</span>
+                    <svg class="w-3 h-3 transition-transform group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                 </a>
             </div>
         </header>
 
-        <!-- Layout -->
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        <!-- Main Grid -->
+        <div class="bento-grid">
             
-            <!-- Hero News (占据左侧 2列 2行) -->
-            <div class="bento-card md:col-span-2 md:row-span-2 relative overflow-hidden group min-h-[400px] flex flex-col justify-end aurora-bg">
-                <!-- 噪点纹理 (增加质感) -->
-                <div class="absolute inset-0 opacity-20" style="background-image: url('https://grainy-gradients.vercel.app/noise.svg'); mix-blend-mode: overlay;"></div>
-                
-                <!-- 装饰性光晕 -->
-                <div class="absolute -top-20 -right-20 w-64 h-64 bg-blue-500 rounded-full blur-[100px] opacity-20 mix-blend-screen animate-pulse"></div>
+            <!-- Hero Card (Left Large) -->
+            <div class="col-span-2 row-span-2 glass-card rounded-3xl relative overflow-hidden group flex flex-col justify-between p-8 md:p-10">
+                <div class="mesh-gradient absolute inset-0 group-hover:opacity-80 transition-opacity duration-700"></div>
+                <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent"></div>
 
-                <!-- 内容层 -->
-                <div class="relative z-20 p-8">
-                    <div class="flex items-center gap-2 mb-3">
-                        <span class="text-[10px] font-bold bg-white/10 text-white border border-white/20 px-2 py-0.5 rounded backdrop-blur-md shadow-sm">TOP STORY</span>
-                        <span class="text-[10px] text-blue-200/80 font-mono"></span>
-                    </div>
-                    
-                    <a href="#" target="_blank" class="block group-hover:opacity-100 transition-opacity">
-                        <h2 class="text-3xl md:text-4xl font-bold text-white leading-tight mb-4 tracking-tight drop-shadow-lg">
-                            Waiting...
-                        </h2>
-                        <p class="text-blue-100/70 text-sm md:text-base leading-relaxed line-clamp-3 md:line-clamp-none max-w-lg font-light">
-                            
-                        </p>
+                <div class="relative z-10 flex justify-between items-start">
+                    <span class="inline-flex items-center justify-center px-2.5 py-1 rounded-md bg-blue-500/10 border border-blue-500/20 text-[10px] font-bold tracking-wide text-blue-400 uppercase">
+                        High Priority
+                    </span>
+                    <a href="https://finance.yahoo.com/quote/GOOG/" target="_blank" class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-white/50 hover:text-white hover:bg-white/10 transition-all">
+                        <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
                     </a>
                 </div>
+
+                <div class="relative z-10 mt-auto">
+                    <div class="flex items-center gap-2 mb-3 text-gray-400 text-xs font-mono uppercase tracking-wider">
+                        <span>Yahoo Finance</span>
+                        <span class="w-1 h-1 rounded-full bg-gray-600"></span>
+                        <span>HEADLINE</span>
+                    </div>
+                    <a href="https://finance.yahoo.com/quote/GOOG/" target="_blank" class="block group-hover:text-blue-100 transition-colors">
+                        <h2 class="text-3xl md:text-4xl lg:text-5xl font-medium text-white leading-[1.1] mb-4 text-balance tracking-tight">
+                            Alphabet Seeks $16B for Waymo at $110B Valuation
+                        </h2>
+                    </a>
+                    <p class="text-base text-gray-400 leading-relaxed max-w-lg line-clamp-3 text-balance font-light">
+                        Alphabet is reportedly pursuing a massive $16 billion funding round for its self-driving unit Waymo, aiming for a valuation of $110 billion. This move underscores continued confidence in autonomous driving AI despite market fluctuations.
+                    </p>
+                </div>
             </div>
 
-            <!-- Weather (1x1) -->
-            <div class="bento-card p-6 flex flex-col justify-between h-48">
+            <!-- Weather Card -->
+            <div class="glass-card rounded-3xl p-6 md:p-8 flex flex-col justify-between group hover:border-white/10 transition-colors">
                 <div class="flex justify-between items-start">
-                    <span class="text-xs text-gray-500 uppercase tracking-wider font-medium">SHENZHEN</span>
-                    <span class="text-2xl opacity-50">🌥️</span>
+                    <span class="text-[10px] font-mono text-gray-500 uppercase tracking-widest">Local Env</span>
+                    <span class="text-xl opacity-60 grayscale group-hover:grayscale-0 transition-all">Sunny</span>
                 </div>
                 <div>
-                    <div class="text-4xl font-light text-white mb-1">--</div>
-                    <div class="text-xs text-gray-500 leading-snug"></div>
+                    <div class="text-4xl font-light text-white tracking-tighter mb-2">+15°C</div>
+                    <div class="text-xs text-gray-500 leading-relaxed font-medium">
+                        Humidity is moderate (53%) with a gentle breeze. Weather is comfortable, suitable for outdoor activities.
+                    </div>
                 </div>
             </div>
 
-            <!-- Market (1x1) -->
-            <div class="bento-card p-6 flex flex-col justify-between h-48">
-                <span class="text-xs text-gray-500 uppercase tracking-wider font-medium">MARKETS</span>
-                <div class="space-y-4">
+            <!-- Market Card -->
+            <div class="glass-card rounded-3xl p-6 md:p-8 flex flex-col group hover:border-white/10 transition-colors">
+                <div class="flex justify-between items-center mb-6">
+                    <span class="text-[10px] font-mono text-gray-500 uppercase tracking-widest">Market Watch</span>
+                    <div class="flex gap-1">
+                        <span class="w-1 h-1 rounded-full bg-gray-700"></span>
+                        <span class="w-1 h-1 rounded-full bg-gray-700"></span>
+                    </div>
+                </div>
+                <div class="flex-1 flex flex-col justify-center space-y-1">
                     
+    <div class="group flex items-center justify-between p-3 rounded-lg hover:bg-white/5 transition-colors border border-transparent hover:border-white/5">
+        <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-[10px] font-bold text-gray-400 group-hover:text-white transition-colors">
+                N
+            </div>
+            <div class="flex flex-col">
+                <span class="text-sm font-bold text-gray-200 group-hover:text-white">NVDA</span>
+                <span class="text-[10px] text-gray-500 font-mono">MARKET</span>
+            </div>
+        </div>
+        
+        <div class="flex flex-col items-end">
+            <span class="text-sm font-medium text-white font-mono tracking-tight">$188.52</span>
+            <div class="flex items-center gap-1 mt-0.5">
+                <span class="text-emerald-400"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg></span>
+                <span class="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-1.5 py-0.5 rounded-sm">+1.10%</span>
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="group flex items-center justify-between p-3 rounded-lg hover:bg-white/5 transition-colors border border-transparent hover:border-white/5">
+        <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-[10px] font-bold text-gray-400 group-hover:text-white transition-colors">
+                G
+            </div>
+            <div class="flex flex-col">
+                <span class="text-sm font-bold text-gray-200 group-hover:text-white">GOOG</span>
+                <span class="text-[10px] text-gray-500 font-mono">MARKET</span>
+            </div>
+        </div>
+        
+        <div class="flex flex-col items-end">
+            <span class="text-sm font-medium text-white font-mono tracking-tight">$338.53</span>
+            <div class="flex items-center gap-1 mt-0.5">
+                <span class="text-gray-400"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line></svg></span>
+                <span class="text-[10px] font-mono text-gray-400 bg-gray-500/10 px-1.5 py-0.5 rounded-sm">-0.04%</span>
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="group flex items-center justify-between p-3 rounded-lg hover:bg-white/5 transition-colors border border-transparent hover:border-white/5">
+        <div class="flex items-center gap-3">
+            <div class="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center text-[10px] font-bold text-gray-400 group-hover:text-white transition-colors">
+                B
+            </div>
+            <div class="flex flex-col">
+                <span class="text-sm font-bold text-gray-200 group-hover:text-white">BTC</span>
+                <span class="text-[10px] text-gray-500 font-mono">MARKET</span>
+            </div>
+        </div>
+        
+        <div class="flex flex-col items-end">
+            <span class="text-sm font-medium text-white font-mono tracking-tight">$103,420</span>
+            <div class="flex items-center gap-1 mt-0.5">
+                <span class="text-emerald-400"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg></span>
+                <span class="text-[10px] font-mono text-emerald-400 bg-emerald-500/10 px-1.5 py-0.5 rounded-sm">+2.1%</span>
+            </div>
+        </div>
+    </div>
+    
                 </div>
             </div>
 
-            <!-- Secondary List (2x1 纵向长条 或者 2x1 横向) -->
-            <div class="bento-card p-6 md:col-span-2 flex flex-col justify-center">
-                <span class="text-xs text-gray-500 uppercase tracking-wider font-medium mb-4 block">BRIEFING</span>
-                <div class="space-y-1">
+            <!-- Secondary News List (Span 2 cols) -->
+            <div class="col-span-2 glass-card rounded-3xl p-6 md:p-8 flex flex-col relative overflow-hidden">
+                <div class="flex items-center gap-2 mb-6 border-b border-white/5 pb-4">
+                    <svg class="w-4 h-4 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                    <span class="text-[10px] font-mono text-gray-500 uppercase tracking-widest">Briefing Stream</span>
+                </div>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 h-full">
                     
+    <a href="https://finance.yahoo.com/quote/GOOG/" target="_blank" class="group relative flex flex-col gap-1.5 p-4 rounded-xl hover:bg-white/5 border border-transparent hover:border-white/5 transition-all duration-300">
+        <div class="flex items-center justify-between">
+            <span class="text-[9px] font-bold tracking-widest text-blue-400 uppercase bg-blue-500/10 px-1.5 py-0.5 rounded">Yahoo Finance</span>
+            <span class="text-[10px] text-gray-600 font-mono group-hover:text-gray-500 transition-colors">Today</span>
+        </div>
+        <h4 class="text-sm font-medium text-gray-200 group-hover:text-white leading-snug transition-colors pr-4">
+            Google's 'Project Genie' Gains Traction in Gaming
+        </h4>
+        <div class="absolute right-4 top-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M7 17L17 7"></path><path d="M7 7h10v10"></path></svg>
+        </div>
+    </a>
+    
+
+    <a href="https://finance.yahoo.com/quote/NVDA/" target="_blank" class="group relative flex flex-col gap-1.5 p-4 rounded-xl hover:bg-white/5 border border-transparent hover:border-white/5 transition-all duration-300">
+        <div class="flex items-center justify-between">
+            <span class="text-[9px] font-bold tracking-widest text-blue-400 uppercase bg-blue-500/10 px-1.5 py-0.5 rounded">Yahoo Finance</span>
+            <span class="text-[10px] text-gray-600 font-mono group-hover:text-gray-500 transition-colors">Today</span>
+        </div>
+        <h4 class="text-sm font-medium text-gray-200 group-hover:text-white leading-snug transition-colors pr-4">
+            Nvidia Poised for China H200 Chip Sales Approval
+        </h4>
+        <div class="absolute right-4 top-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M7 17L17 7"></path><path d="M7 7h10v10"></path></svg>
+        </div>
+    </a>
+    
+
+    <a href="https://edition.cnn.com/2026/01/30/americas/cuba-oil-supply-trump-tariff-mexico-latam-intl" target="_blank" class="group relative flex flex-col gap-1.5 p-4 rounded-xl hover:bg-white/5 border border-transparent hover:border-white/5 transition-all duration-300">
+        <div class="flex items-center justify-between">
+            <span class="text-[9px] font-bold tracking-widest text-blue-400 uppercase bg-blue-500/10 px-1.5 py-0.5 rounded">CNN</span>
+            <span class="text-[10px] text-gray-600 font-mono group-hover:text-gray-500 transition-colors">Today</span>
+        </div>
+        <h4 class="text-sm font-medium text-gray-200 group-hover:text-white leading-snug transition-colors pr-4">
+            Trump Threatens Tariffs on Mexico Over Cuba Oil
+        </h4>
+        <div class="absolute right-4 top-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M7 17L17 7"></path><path d="M7 7h10v10"></path></svg>
+        </div>
+    </a>
+    
+
+    <a href="https://edition.cnn.com/2026/02/01/middleeast/iran-diplomat-araghchi-interview-intl" target="_blank" class="group relative flex flex-col gap-1.5 p-4 rounded-xl hover:bg-white/5 border border-transparent hover:border-white/5 transition-all duration-300">
+        <div class="flex items-center justify-between">
+            <span class="text-[9px] font-bold tracking-widest text-blue-400 uppercase bg-blue-500/10 px-1.5 py-0.5 rounded">CNN</span>
+            <span class="text-[10px] text-gray-600 font-mono group-hover:text-gray-500 transition-colors">Today</span>
+        </div>
+        <h4 class="text-sm font-medium text-gray-200 group-hover:text-white leading-snug transition-colors pr-4">
+            Iran FM Optimistic on Talks Despite US Military Buildup
+        </h4>
+        <div class="absolute right-4 top-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M7 17L17 7"></path><path d="M7 7h10v10"></path></svg>
+        </div>
+    </a>
+    
+
+    <a href="https://edition.cnn.com/2026/01/31/uk/amelia-meme-ai-far-right-intl-scli" target="_blank" class="group relative flex flex-col gap-1.5 p-4 rounded-xl hover:bg-white/5 border border-transparent hover:border-white/5 transition-all duration-300">
+        <div class="flex items-center justify-between">
+            <span class="text-[9px] font-bold tracking-widest text-blue-400 uppercase bg-blue-500/10 px-1.5 py-0.5 rounded">CNN</span>
+            <span class="text-[10px] text-gray-600 font-mono group-hover:text-gray-500 transition-colors">Today</span>
+        </div>
+        <h4 class="text-sm font-medium text-gray-200 group-hover:text-white leading-snug transition-colors pr-4">
+            AI 'Schoolgirl' Meme Growing in Far-Right Circles
+        </h4>
+        <div class="absolute right-4 top-4 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-white"><path d="M7 17L17 7"></path><path d="M7 7h10v10"></path></svg>
+        </div>
+    </a>
+    
                 </div>
             </div>
 
         </div>
-        
+
         <!-- Footer -->
-        <footer class="mt-16 border-t border-gray-900 pt-8 flex justify-between text-[10px] text-gray-600 font-mono uppercase">
-            <span>2026.02.02 · DAILY INTELLIGENCE</span>
-            <span>ID: SESS-GEN</span>
+        <footer class="mt-20 border-t border-white/5 pt-8 flex flex-col md:flex-row justify-between items-start md:items-center gap-4 text-[10px] font-mono text-gray-600 uppercase tracking-wider">
+            <div class="flex items-center gap-4">
+                <span>Session ID: SESS-GEN</span>
+                <span class="hidden md:inline text-gray-800">|</span>
+                <span>Latency: Optimal</span>
+            </div>
+            <div class="flex gap-6">
+                <a href="#" class="hover:text-gray-400 transition-colors">Privacy</a>
+                <a href="#" class="hover:text-gray-400 transition-colors">Source</a>
+                <a href="#" class="hover:text-gray-400 transition-colors">Contact</a>
+            </div>
         </footer>
 
     </div>
