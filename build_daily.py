@@ -24,35 +24,105 @@ def load_template():
 
 def render_secondary_item(item):
     return f"""
-    <a href="{item['url']}" target="_blank" class="block p-4 hover:bg-white/5 transition-colors group">
-        <div class="flex items-center justify-between mb-1">
-            <span class="text-[9px] font-bold text-blue-400/80 uppercase tracking-wider">{item['source']}</span>
-            <span class="text-[10px] font-mono text-neutral-500">{item['time']}</span>
+    <div class="group relative p-5 rounded-xl transition-all hover:bg-neutral-900" style="background-color: #111111; border: 1px solid #262626; border-color: #262626;">
+        <div class="flex items-center justify-between mb-3">
+            <span class="mono text-[9px] font-bold text-blue-400/80 uppercase tracking-wider px-1.5 py-0.5 rounded border border-blue-500/20 bg-blue-500/5">{item['source']}</span>
+            <span class="mono text-[10px] text-neutral-600 group-hover:text-neutral-500 transition-colors">{item['time']}</span>
         </div>
-        <h3 class="text-sm font-medium text-gray-200 group-hover:text-white leading-snug">
-            {item['title']}
-        </h3>
-    </a>
+        <a href="{item['url']}" target="_blank" class="block">
+            <h3 class="text-sm font-medium text-neutral-300 group-hover:text-white leading-relaxed transition-colors">
+                {item['title']}
+            </h3>
+        </a>
+        <div class="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity -translate-x-2 group-hover:translate-x-0 duration-300">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-neutral-500"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
+        </div>
+    </div>
     """
 
 def render_stock_item(stock):
     trend = stock.get('trend', 'neutral')
     
     if trend == 'up':
-        color_class = "text-emerald-400"
+        color = "#10b981" # emerald-500
+        bg_color = "rgba(16, 185, 129, 0.1)"
+        arrow = "↑"
     elif trend == 'down':
-        color_class = "text-rose-400"
+        color = "#f43f5e" # rose-500
+        bg_color = "rgba(244, 63, 94, 0.1)"
+        arrow = "↓"
     else:
-        color_class = "text-neutral-400"
+        color = "#737373" # neutral-500
+        bg_color = "rgba(115, 115, 115, 0.1)"
+        arrow = "-"
     
+import random
+
+def generate_sparkline(width=60, height=20, color="#10b981", trend="up"):
+    # Generate 7 points
+    points = []
+    step = width / 6
+    
+    # Start point
+    start_y = random.randint(5, 15)
+    points.append((0, start_y))
+    
+    current_y = start_y
+    for i in range(1, 6):
+        # Random walk
+        delta = random.randint(-5, 5)
+        current_y = max(2, min(height-2, current_y + delta))
+        points.append((i * step, current_y))
+    
+    # End point guided by trend
+    if trend == 'up':
+        end_y = random.randint(2, 8) # Higher (smaller y)
+    elif trend == 'down':
+        end_y = random.randint(12, 18) # Lower (larger y)
+    else:
+        end_y = random.randint(5, 15)
+        
+    points.append((width, end_y))
+    
+    # Build path d string
+    d = f"M {points[0][0]} {points[0][1]}"
+    for p in points[1:]:
+        d += f" L {p[0]} {p[1]}"
+        
+    return f'<svg width="{width}" height="{height}" viewBox="0 0 {width} {height}" fill="none" stroke="{color}" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="{d}" /></svg>'
+
+def render_stock_item(stock):
+    trend = stock.get('trend', 'neutral')
+    
+    if trend == 'up':
+        color = "#10b981" # emerald-500
+        bg_color = "rgba(16, 185, 129, 0.1)"
+        arrow = "↑"
+    elif trend == 'down':
+        color = "#f43f5e" # rose-500
+        bg_color = "rgba(244, 63, 94, 0.1)"
+        arrow = "↓"
+    else:
+        color = "#737373" # neutral-500
+        bg_color = "rgba(115, 115, 115, 0.1)"
+        arrow = "-"
+    
+    sparkline = generate_sparkline(width=60, height=20, color=color, trend=trend)
+
     return f"""
-    <div class="flex items-center justify-between py-1 group">
-        <div class="flex items-center gap-2">
-            <span class="text-xs font-bold text-gray-300 w-10">{stock['symbol']}</span>
+    <div class="flex items-center justify-between py-2 border-b border-neutral-800/50 last:border-0 group">
+        <div class="flex flex-col">
+            <span class="text-xs font-bold text-gray-200">{stock['symbol']}</span>
+            <span class="mono text-[10px] text-neutral-500">{stock['price']}</span>
         </div>
-        <div class="flex items-center gap-2">
-            <span class="text-xs font-mono text-gray-400">{stock['price']}</span>
-            <span class="text-[10px] font-mono {color_class} bg-white/5 px-1 rounded">{stock['change']}</span>
+        <div class="flex items-center gap-4">
+            <div class="hidden sm:block opacity-50 group-hover:opacity-100 transition-opacity">
+                {sparkline}
+            </div>
+            <div class="mono text-[10px] px-1.5 py-0.5 rounded flex items-center gap-1 min-w-[60px] justify-end" style="color: {color}; background-color: {bg_color};">
+                <span>{arrow}</span>
+                <span>{stock['change']}</span>
+            </div>
         </div>
     </div>
     """
@@ -101,6 +171,32 @@ def update_archive_index():
     with open(os.path.join(ARCHIVE_DIR, "index.html"), "w", encoding="utf-8") as f:
         f.write(html)
 
+def render_hn_item(item):
+    return f"""
+    <div class="flex items-start gap-3 py-2 border-b border-neutral-800/50 last:border-0 group">
+        <div class="mt-1 min-w-[24px] text-center">
+            <span class="block text-[10px] font-bold text-orange-500 bg-orange-500/10 rounded px-1">{item['points']}</span>
+        </div>
+        <a href="{item['url']}" target="_blank" class="text-sm text-neutral-300 hover:text-white leading-snug transition-colors">
+            {item['title']}
+        </a>
+    </div>
+    """
+
+def render_github_item(item):
+    return f"""
+    <div class="flex items-center justify-between py-2 border-b border-neutral-800/50 last:border-0">
+        <div>
+            <div class="text-sm font-medium text-neutral-200">{item['repo']}</div>
+            <div class="text-[10px] text-neutral-500">{item['lang']}</div>
+        </div>
+        <div class="flex items-center gap-1 text-[10px] text-neutral-400">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+            {item['stars']}
+        </div>
+    </div>
+    """
+
 def build():
     data = load_data()
     if not data: return 
@@ -115,6 +211,13 @@ def build():
     secondary_html = "\n".join([render_secondary_item(i) for i in secondary_items])
     stock_items = data.get("stocks", [])
     stocks_html = "\n".join([render_stock_item(s) for s in stock_items])
+    
+    # New Sections
+    hn_items = data.get("hacker_news", [])
+    hn_html = "\n".join([render_hn_item(i) for i in hn_items])
+    
+    gh_items = data.get("github_trending", [])
+    gh_html = "\n".join([render_github_item(i) for i in gh_items])
 
     html = load_template()
     html = html.replace("{{DATE_STR_SHORT}}", date_str_short)
@@ -132,10 +235,16 @@ def build():
     html = html.replace("{{HERO_SUMMARY}}", hero.get("summary", ""))
     html = html.replace("{{HERO_URL}}", hero.get("url", "#"))
     
-    # CSS Aurora Gradient handles the hero visual now.
-    
-    html = html.replace("{{SECONDARY_NEWS_LIST}}", secondary_html)
+    html = html.replace("{{SECONDARY_NEWS_BLOCKS}}", secondary_html)
     html = html.replace("{{STOCK_LIST}}", stocks_html)
+    
+    # Inject new sections (placeholder injection points need to be added to template first, 
+    # but we will just append them for now or assume specific tags if we edited template.
+    # Actually, let's replace a specific marker or area.
+    # Since we haven't updated template.html to have {{HN_LIST}} yet, we need to do that next.
+    # But this script writes the strings.
+    html = html.replace("{{HN_LIST}}", hn_html)
+    html = html.replace("{{GH_LIST}}", gh_html)
 
     # 1. 生成主页 (index.html)
     # 主页在根目录，去 Archive 需要进一层

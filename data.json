@@ -1,66 +1,54 @@
 {
-  "date": "2026-02-02",
+  "date": "2026-02-03",
+  "session_id": "SESS-MORNING-02",
   "weather": {
     "temp": "+15°C",
     "cond": "Sunny",
-    "advice": "Humidity is moderate (53%) with a gentle breeze. Weather is comfortable, suitable for outdoor activities."
+    "advice": "Pleasant conditions (15°C) with clear skies. Great day for a walk."
   },
   "hero_news": {
-    "title": "Alphabet Seeks $16B for Waymo at $110B Valuation",
-    "source": "Yahoo Finance",
-    "summary": "Alphabet is reportedly pursuing a massive $16 billion funding round for its self-driving unit Waymo, aiming for a valuation of $110 billion. This move underscores continued confidence in autonomous driving AI despite market fluctuations.",
-    "url": "https://finance.yahoo.com/quote/GOOG/"
+    "title": "Nvidia's $100B OpenAI Investment 'Stalled'",
+    "source": "CNBC / Reuters",
+    "summary": "Nvidia shares dipped after reports that its planned $100 billion investment in OpenAI is stalled. CEO Jensen Huang clarified the figure was a 'non-binding' intent, signaling potential friction in the massive AI infrastructure partnership.",
+    "url": "https://www.cnbc.com/2026/02/02/nvidia-stock-price-openai-funding.html"
   },
   "stocks": [
-    {
-      "symbol": "NVDA",
-      "price": "$188.52",
-      "change": "+1.10%",
-      "trend": "up"
-    },
-    {
-      "symbol": "GOOG",
-      "price": "$338.53",
-      "change": "-0.04%",
-      "trend": "neutral"
-    },
-    {
-      "symbol": "BTC",
-      "price": "$103,420",
-      "change": "+2.1%",
-      "trend": "up"
-    }
+    { "symbol": "NVDA", "price": "Trending Down", "change": "-2.8%", "trend": "down" },
+    { "symbol": "BTC", "price": "$78,200", "change": "-4.5%", "trend": "down" },
+    { "symbol": "GOOG", "price": "Stable", "change": "+0.1%", "trend": "neutral" }
   ],
   "secondary_news": [
     {
-      "title": "Google's 'Project Genie' Gains Traction in Gaming",
-      "source": "Yahoo Finance",
-      "time": "Today",
-      "url": "https://finance.yahoo.com/quote/GOOG/"
+      "title": "Notepad++ Updates Hijacked by State Actors",
+      "source": "The Hacker News",
+      "time": "4h ago",
+      "url": "https://thehackernews.com/2026/02/notepad-official-update-mechanism.html",
+      "tags": ["Security", "Critical"]
     },
     {
-      "title": "Nvidia Poised for China H200 Chip Sales Approval",
-      "source": "Yahoo Finance",
-      "time": "Today",
-      "url": "https://finance.yahoo.com/quote/NVDA/"
+      "title": "Anthropic Partners with Allen Institute for Science AI",
+      "source": "DNYUZ",
+      "time": "10h ago",
+      "url": "https://dnyuz.com",
+      "tags": ["AI", "Science"]
     },
     {
-      "title": "Trump Threatens Tariffs on Mexico Over Cuba Oil",
-      "source": "CNN",
-      "time": "Today",
-      "url": "https://edition.cnn.com/2026/01/30/americas/cuba-oil-supply-trump-tariff-mexico-latam-intl"
-    },
-    {
-      "title": "Iran FM Optimistic on Talks Despite US Military Buildup",
-      "source": "CNN",
-      "time": "Today",
-      "url": "https://edition.cnn.com/2026/02/01/middleeast/iran-diplomat-araghchi-interview-intl"
-    },
-    {
-      "title": "AI 'Schoolgirl' Meme Growing in Far-Right Circles",
-      "source": "CNN",
-      "time": "Today",
-      "url": "https://edition.cnn.com/2026/01/31/uk/amelia-meme-ai-far-right-intl-scli"
+      "title": "Oracle May Lay Off 30,000 for AI Pivot",
+      "source": "OpenTools",
+      "time": "8h ago",
+      "url": "https://opentools.ai",
+      "tags": ["Business", "Layoffs"]
     }
+  ],
+  "hacker_news": [
+    { "title": "Notepad++ hijacked by state-sponsored actors", "points": 892, "url": "https://news.ycombinator.com/item?id=46851548" },
+    { "title": "We've Reached Peak LLM: System-Level AI is Next", "points": 340, "url": "https://www.salesforce.com/blog/system-level-ai/" },
+    { "title": "Show HN: Browser in a Browser", "points": 452, "url": "#" },
+    { "title": "PostgreSQL 18 Released", "points": 320, "url": "#" }
+  ],
+  "github_trending": [
+    { "repo": "shadcn/ui", "lang": "TypeScript", "stars": "+1.2k" },
+    { "repo": "pytorch/pytorch", "lang": "Python", "stars": "+850" },
+    { "repo": "oven-sh/bun", "lang": "Zig", "stars": "+600" }
   ]
 }

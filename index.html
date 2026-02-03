@@ -8,190 +8,337 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
-            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
                         background: '#0a0a0a',
-                        surface: '#171717',
-                        border: '#262626',
+                        surface: '#111111',
+                        border: '#333333',
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0', transform: 'translateY(10px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
                     }
                 }
             }
         }
     </script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .mono { font-family: 'JetBrains Mono', monospace; }
+        /* Hide scrollbar for clean look */
+        ::-webkit-scrollbar { width: 0px; background: transparent; }
+    </style>
 </head>
-<body style="background-color: #0a0a0a; color: #e5e5e5;" class="antialiased p-4 md:p-8 max-w-3xl mx-auto pb-24 font-[Inter]">
+<body style="background-color: #050505; color: #ededed;" class="antialiased min-h-screen p-4 md:p-6 lg:p-8">
 
-    <!-- Header -->
-    <header class="flex justify-between items-end mb-8">
-        <div>
-            <h1 class="text-4xl font-bold tracking-tight text-white mb-1">Feb 03</h1>
-            <div class="text-xs font-mono text-neutral-500 flex items-center gap-2">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                ONLINE | 2026.02.03
-            </div>
-        </div>
-        <a href="archive/index.html" class="text-xs font-medium text-neutral-400 hover:text-white px-3 py-1.5 rounded-full border border-neutral-800 bg-neutral-900 transition-colors" style="background-color: #171717; border-color: #262626;">
-            ARCHIVE
-        </a>
-    </header>
-
-    <!-- Main Grid -->
-    <div class="space-y-4">
+    <div class="max-w-6xl mx-auto animate-fade-in">
         
-        <!-- Hero Card -->
-        <div class="p-6 relative overflow-hidden group rounded-2xl" style="background-color: #171717; border: 1px solid #262626;">
-             <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20 transition-opacity text-white">
-                <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
-             </div>
-            <div class="flex items-center gap-2 mb-3">
-                <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-blue-500/10 text-blue-400 border border-blue-500/20 uppercase tracking-wide">Top Story</span>
-                <span class="text-[10px] font-mono text-neutral-500 uppercase">Yahoo Finance</span>
+        <!-- Header / Status Bar -->
+        <header class="flex justify-between items-end mb-6 pb-4 border-b border-neutral-800" style="border-color: #262626;">
+            <div>
+                <h1 class="text-3xl md:text-5xl font-bold tracking-tight text-white mb-2 leading-none">Feb 03</h1>
+                <div class="flex items-center gap-3 text-xs mono text-neutral-500">
+                    <div class="flex items-center gap-2 px-2 py-0.5 rounded border border-neutral-800 bg-neutral-900/50" style="background-color: #111; border-color: #333;">
+                        <span class="relative flex h-2 w-2">
+                          <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                          <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                        </span>
+                        <span>SYSTEM ONLINE</span>
+                    </div>
+                    <span>2026.02.03</span>
+                    <span class="text-neutral-600">|</span>
+                    <span>SESS-MORNING-02</span>
+                </div>
             </div>
-            <a href="https://finance.yahoo.com/quote/GOOG/" target="_blank" class="block">
-                <h2 class="text-2xl font-semibold text-white leading-tight mb-3 group-hover:text-blue-400 transition-colors">
-                    Alphabet Seeks $16B for Waymo at $110B Valuation
-                </h2>
-            </a>
-            <p class="text-sm text-neutral-400 leading-relaxed">
-                Alphabet is reportedly pursuing a massive $16 billion funding round for its self-driving unit Waymo, aiming for a valuation of $110 billion. This move underscores continued confidence in autonomous driving AI despite market fluctuations.
+            <div class="flex gap-2">
+                <a href="archive/index.html" class="mono text-[10px] font-medium text-neutral-400 hover:text-white px-3 py-1.5 hover:bg-neutral-800 transition-colors uppercase tracking-wider" style="border: 1px solid #333; border-radius: 4px;">
+                    // Archive
+                </a>
+            </div>
+        </header>
+
+        <!-- Bento Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6">
+            
+            <!-- Hero Section (Cols 1-8) -->
+            <div class="col-span-1 md:col-span-8 group relative flex flex-col justify-between min-h-[320px] rounded-xl overflow-hidden p-6 md:p-8 transition-all hover:border-neutral-600" style="background-color: #111111; border: 1px solid #262626;">
+                <div class="absolute inset-0 bg-gradient-to-br from-neutral-900/50 to-black pointer-events-none"></div>
+                <!-- Subtle background mesh/grid can be added here -->
+                
+                <div class="relative z-10 flex justify-between items-start">
+                    <div class="inline-flex items-center gap-2 px-2 py-1 rounded bg-blue-500/10 border border-blue-500/20 text-blue-400 text-[10px] font-bold uppercase tracking-wider">
+                        <span class="w-1 h-1 bg-blue-400 rounded-full animate-pulse"></span>
+                        Top Story
+                    </div>
+                    <span class="mono text-[10px] text-neutral-500 uppercase tracking-widest">CNBC / Reuters</span>
+                </div>
+
+                <div class="relative z-10 mt-auto">
+                    <a href="https://www.cnbc.com/2026/02/02/nvidia-stock-price-openai-funding.html" target="_blank" class="block group-hover:opacity-80 transition-opacity">
+                        <h2 class="text-3xl md:text-4xl font-semibold text-white leading-[1.1] mb-4 tracking-tight">
+                            Nvidia's $100B OpenAI Investment 'Stalled'
+                        </h2>
+                    </a>
+                    <p class="text-sm md:text-base text-neutral-400 leading-relaxed max-w-2xl border-l-2 border-neutral-800 pl-4" style="border-color: #333;">
+                        Nvidia shares dipped after reports that its planned $100 billion investment in OpenAI is stalled. CEO Jensen Huang clarified the figure was a 'non-binding' intent, signaling potential friction in the massive AI infrastructure partnership.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Sidebar: Markets & Weather (Cols 9-12) -->
+            <div class="col-span-1 md:col-span-4 flex flex-col gap-4 md:gap-6">
+                
+                <!-- Weather Compact -->
+                <div class="p-5 rounded-xl flex items-center justify-between" style="background-color: #111111; border: 1px solid #262626;">
+                    <div>
+                        <div class="mono text-[10px] text-neutral-500 uppercase mb-1">Shenzhen, CN</div>
+                        <div class="text-2xl font-medium text-white">+15°C <span class="text-neutral-500 text-base font-normal">Sunny</span></div>
+                    </div>
+                    <!-- Icon Placeholder -->
+                    <div class="text-right">
+                         <div class="w-10 h-10 rounded-full border border-neutral-800 flex items-center justify-center bg-neutral-900 text-yellow-500" style="border-color: #333;">
+                            ☀
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Markets Table -->
+                <div class="flex-1 p-5 rounded-xl flex flex-col" style="background-color: #111111; border: 1px solid #262626;">
+                    <div class="flex justify-between items-center mb-4 pb-2 border-b border-neutral-800" style="border-color: #262626;">
+                        <span class="mono text-[10px] text-neutral-500 uppercase tracking-wider">Market Data</span>
+                        <div class="flex items-center gap-1.5">
+                            <span class="relative flex h-1.5 w-1.5">
+                              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                              <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>
+                            </span>
+                            <span class="text-[10px] text-emerald-500 font-medium">Live</span>
+                        </div>
+                    </div>
+                    
+                    <div class="space-y-4 flex-1">
+                        
+    <div class="flex items-center justify-between py-2 border-b border-neutral-800/50 last:border-0 group">
+        <div class="flex flex-col">
+            <span class="text-xs font-bold text-gray-200">NVDA</span>
+            <span class="mono text-[10px] text-neutral-500">Trending Down</span>
+        </div>
+        <div class="flex items-center gap-4">
+            <div class="hidden sm:block opacity-50 group-hover:opacity-100 transition-opacity">
+                <svg width="60" height="20" viewBox="0 0 60 20" fill="none" stroke="#f43f5e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M 0 11 L 10.0 15 L 20.0 16 L 30.0 16 L 40.0 18 L 50.0 14 L 60 14" /></svg>
+            </div>
+            <div class="mono text-[10px] px-1.5 py-0.5 rounded flex items-center gap-1 min-w-[60px] justify-end" style="color: #f43f5e; background-color: rgba(244, 63, 94, 0.1);">
+                <span>↓</span>
+                <span>-2.8%</span>
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="flex items-center justify-between py-2 border-b border-neutral-800/50 last:border-0 group">
+        <div class="flex flex-col">
+            <span class="text-xs font-bold text-gray-200">BTC</span>
+            <span class="mono text-[10px] text-neutral-500">$78,200</span>
+        </div>
+        <div class="flex items-center gap-4">
+            <div class="hidden sm:block opacity-50 group-hover:opacity-100 transition-opacity">
+                <svg width="60" height="20" viewBox="0 0 60 20" fill="none" stroke="#f43f5e" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M 0 6 L 10.0 11 L 20.0 9 L 30.0 5 L 40.0 7 L 50.0 4 L 60 17" /></svg>
+            </div>
+            <div class="mono text-[10px] px-1.5 py-0.5 rounded flex items-center gap-1 min-w-[60px] justify-end" style="color: #f43f5e; background-color: rgba(244, 63, 94, 0.1);">
+                <span>↓</span>
+                <span>-4.5%</span>
+            </div>
+        </div>
+    </div>
+    
+
+    <div class="flex items-center justify-between py-2 border-b border-neutral-800/50 last:border-0 group">
+        <div class="flex flex-col">
+            <span class="text-xs font-bold text-gray-200">GOOG</span>
+            <span class="mono text-[10px] text-neutral-500">Stable</span>
+        </div>
+        <div class="flex items-center gap-4">
+            <div class="hidden sm:block opacity-50 group-hover:opacity-100 transition-opacity">
+                <svg width="60" height="20" viewBox="0 0 60 20" fill="none" stroke="#737373" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M 0 12 L 10.0 12 L 20.0 9 L 30.0 14 L 40.0 9 L 50.0 5 L 60 7" /></svg>
+            </div>
+            <div class="mono text-[10px] px-1.5 py-0.5 rounded flex items-center gap-1 min-w-[60px] justify-end" style="color: #737373; background-color: rgba(115, 115, 115, 0.1);">
+                <span>-</span>
+                <span>+0.1%</span>
+            </div>
+        </div>
+    </div>
+    
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Secondary News Grid (Full Width, split 3) -->
+            <div class="col-span-1 md:col-span-12 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mt-2">
+                
+    <div class="group relative p-5 rounded-xl transition-all hover:bg-neutral-900" style="background-color: #111111; border: 1px solid #262626; border-color: #262626;">
+        <div class="flex items-center justify-between mb-3">
+            <span class="mono text-[9px] font-bold text-blue-400/80 uppercase tracking-wider px-1.5 py-0.5 rounded border border-blue-500/20 bg-blue-500/5">The Hacker News</span>
+            <span class="mono text-[10px] text-neutral-600 group-hover:text-neutral-500 transition-colors">4h ago</span>
+        </div>
+        <a href="https://thehackernews.com/2026/02/notepad-official-update-mechanism.html" target="_blank" class="block">
+            <h3 class="text-sm font-medium text-neutral-300 group-hover:text-white leading-relaxed transition-colors">
+                Notepad++ Updates Hijacked by State Actors
+            </h3>
+        </a>
+        <div class="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity -translate-x-2 group-hover:translate-x-0 duration-300">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-neutral-500"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
+        </div>
+    </div>
+    
+
+    <div class="group relative p-5 rounded-xl transition-all hover:bg-neutral-900" style="background-color: #111111; border: 1px solid #262626; border-color: #262626;">
+        <div class="flex items-center justify-between mb-3">
+            <span class="mono text-[9px] font-bold text-blue-400/80 uppercase tracking-wider px-1.5 py-0.5 rounded border border-blue-500/20 bg-blue-500/5">DNYUZ</span>
+            <span class="mono text-[10px] text-neutral-600 group-hover:text-neutral-500 transition-colors">10h ago</span>
+        </div>
+        <a href="https://dnyuz.com" target="_blank" class="block">
+            <h3 class="text-sm font-medium text-neutral-300 group-hover:text-white leading-relaxed transition-colors">
+                Anthropic Partners with Allen Institute for Science AI
+            </h3>
+        </a>
+        <div class="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity -translate-x-2 group-hover:translate-x-0 duration-300">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-neutral-500"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
+        </div>
+    </div>
+    
+
+    <div class="group relative p-5 rounded-xl transition-all hover:bg-neutral-900" style="background-color: #111111; border: 1px solid #262626; border-color: #262626;">
+        <div class="flex items-center justify-between mb-3">
+            <span class="mono text-[9px] font-bold text-blue-400/80 uppercase tracking-wider px-1.5 py-0.5 rounded border border-blue-500/20 bg-blue-500/5">OpenTools</span>
+            <span class="mono text-[10px] text-neutral-600 group-hover:text-neutral-500 transition-colors">8h ago</span>
+        </div>
+        <a href="https://opentools.ai" target="_blank" class="block">
+            <h3 class="text-sm font-medium text-neutral-300 group-hover:text-white leading-relaxed transition-colors">
+                Oracle May Lay Off 30,000 for AI Pivot
+            </h3>
+        </a>
+        <div class="absolute bottom-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity -translate-x-2 group-hover:translate-x-0 duration-300">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-neutral-500"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
+        </div>
+    </div>
+    
+            </div>
+
+            <!-- Dev Pulse Section (Hacker News & GitHub) -->
+            <div class="col-span-1 md:col-span-12 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mt-2">
+                
+                <!-- Hacker News -->
+                <div class="p-5 rounded-xl" style="background-color: #111111; border: 1px solid #262626;">
+                    <div class="flex items-center gap-2 mb-4 pb-2 border-b border-neutral-800" style="border-color: #262626;">
+                        <span class="w-4 h-4 bg-orange-500 rounded flex items-center justify-center text-[10px] font-bold text-white">Y</span>
+                        <span class="mono text-[10px] text-neutral-500 uppercase tracking-wider">Hacker News</span>
+                    </div>
+                    <div class="space-y-1">
+                        
+    <div class="flex items-start gap-3 py-2 border-b border-neutral-800/50 last:border-0 group">
+        <div class="mt-1 min-w-[24px] text-center">
+            <span class="block text-[10px] font-bold text-orange-500 bg-orange-500/10 rounded px-1">892</span>
+        </div>
+        <a href="https://news.ycombinator.com/item?id=46851548" target="_blank" class="text-sm text-neutral-300 hover:text-white leading-snug transition-colors">
+            Notepad++ hijacked by state-sponsored actors
+        </a>
+    </div>
+    
+
+    <div class="flex items-start gap-3 py-2 border-b border-neutral-800/50 last:border-0 group">
+        <div class="mt-1 min-w-[24px] text-center">
+            <span class="block text-[10px] font-bold text-orange-500 bg-orange-500/10 rounded px-1">340</span>
+        </div>
+        <a href="https://www.salesforce.com/blog/system-level-ai/" target="_blank" class="text-sm text-neutral-300 hover:text-white leading-snug transition-colors">
+            We've Reached Peak LLM: System-Level AI is Next
+        </a>
+    </div>
+    
+
+    <div class="flex items-start gap-3 py-2 border-b border-neutral-800/50 last:border-0 group">
+        <div class="mt-1 min-w-[24px] text-center">
+            <span class="block text-[10px] font-bold text-orange-500 bg-orange-500/10 rounded px-1">452</span>
+        </div>
+        <a href="#" target="_blank" class="text-sm text-neutral-300 hover:text-white leading-snug transition-colors">
+            Show HN: Browser in a Browser
+        </a>
+    </div>
+    
+
+    <div class="flex items-start gap-3 py-2 border-b border-neutral-800/50 last:border-0 group">
+        <div class="mt-1 min-w-[24px] text-center">
+            <span class="block text-[10px] font-bold text-orange-500 bg-orange-500/10 rounded px-1">320</span>
+        </div>
+        <a href="#" target="_blank" class="text-sm text-neutral-300 hover:text-white leading-snug transition-colors">
+            PostgreSQL 18 Released
+        </a>
+    </div>
+    
+                    </div>
+                </div>
+
+                <!-- GitHub Trending -->
+                <div class="p-5 rounded-xl" style="background-color: #111111; border: 1px solid #262626;">
+                     <div class="flex items-center gap-2 mb-4 pb-2 border-b border-neutral-800" style="border-color: #262626;">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                        <span class="mono text-[10px] text-neutral-500 uppercase tracking-wider">GitHub Trending</span>
+                    </div>
+                    <div class="space-y-1">
+                        
+    <div class="flex items-center justify-between py-2 border-b border-neutral-800/50 last:border-0">
+        <div>
+            <div class="text-sm font-medium text-neutral-200">shadcn/ui</div>
+            <div class="text-[10px] text-neutral-500">TypeScript</div>
+        </div>
+        <div class="flex items-center gap-1 text-[10px] text-neutral-400">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+            +1.2k
+        </div>
+    </div>
+    
+
+    <div class="flex items-center justify-between py-2 border-b border-neutral-800/50 last:border-0">
+        <div>
+            <div class="text-sm font-medium text-neutral-200">pytorch/pytorch</div>
+            <div class="text-[10px] text-neutral-500">Python</div>
+        </div>
+        <div class="flex items-center gap-1 text-[10px] text-neutral-400">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+            +850
+        </div>
+    </div>
+    
+
+    <div class="flex items-center justify-between py-2 border-b border-neutral-800/50 last:border-0">
+        <div>
+            <div class="text-sm font-medium text-neutral-200">oven-sh/bun</div>
+            <div class="text-[10px] text-neutral-500">Zig</div>
+        </div>
+        <div class="flex items-center gap-1 text-[10px] text-neutral-400">
+            <svg width="10" height="10" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+            +600
+        </div>
+    </div>
+    
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <footer class="mt-16 py-8 border-t border-neutral-900 text-center" style="border-color: #1a1a1a;">
+            <p class="mono text-[10px] text-neutral-600 uppercase tracking-widest">
+                Generated by OpenClaw • Night Shift Design Unit
             </p>
-        </div>
-
-        <!-- 2-Col Grid for Metrics -->
-        <div class="grid grid-cols-2 gap-4">
-            <!-- Weather -->
-            <div class="p-5 flex flex-col justify-between rounded-2xl" style="background-color: #171717; border: 1px solid #262626;">
-                <div class="flex justify-between items-start mb-2">
-                    <span class="text-[10px] font-mono text-neutral-500 uppercase tracking-wider">Shenzhen</span>
-                    <span class="text-xl text-neutral-200">Sunny</span>
-                </div>
-                <div>
-                    <div class="text-3xl font-light text-white mb-1">+15°C</div>
-                    <div class="text-[11px] leading-snug text-neutral-500 line-clamp-3">
-                        Humidity is moderate (53%) with a gentle breeze. Weather is comfortable, suitable for outdoor activities.
-                    </div>
-                </div>
-            </div>
-
-            <!-- Market -->
-            <div class="p-4 space-y-2 rounded-2xl" style="background-color: #171717; border: 1px solid #262626;">
-                <div class="flex justify-between items-center mb-1 pb-2 border-b border-neutral-800">
-                    <span class="text-[10px] font-mono text-neutral-500 uppercase tracking-wider">Markets</span>
-                    <div class="flex gap-1">
-                        <span class="w-1 h-1 bg-white/20 rounded-full"></span>
-                        <span class="w-1 h-1 bg-white/20 rounded-full"></span>
-                    </div>
-                </div>
-                
-    <div class="flex items-center justify-between py-1 group">
-        <div class="flex items-center gap-2">
-            <span class="text-xs font-bold text-gray-300 w-10">NVDA</span>
-        </div>
-        <div class="flex items-center gap-2">
-            <span class="text-xs font-mono text-gray-400">$188.52</span>
-            <span class="text-[10px] font-mono text-emerald-400 bg-white/5 px-1 rounded">+1.10%</span>
-        </div>
-    </div>
-    
-
-    <div class="flex items-center justify-between py-1 group">
-        <div class="flex items-center gap-2">
-            <span class="text-xs font-bold text-gray-300 w-10">GOOG</span>
-        </div>
-        <div class="flex items-center gap-2">
-            <span class="text-xs font-mono text-gray-400">$338.53</span>
-            <span class="text-[10px] font-mono text-neutral-400 bg-white/5 px-1 rounded">-0.04%</span>
-        </div>
-    </div>
-    
-
-    <div class="flex items-center justify-between py-1 group">
-        <div class="flex items-center gap-2">
-            <span class="text-xs font-bold text-gray-300 w-10">BTC</span>
-        </div>
-        <div class="flex items-center gap-2">
-            <span class="text-xs font-mono text-gray-400">$103,420</span>
-            <span class="text-[10px] font-mono text-emerald-400 bg-white/5 px-1 rounded">+2.1%</span>
-        </div>
-    </div>
-    
-            </div>
-        </div>
-
-        <!-- Secondary News -->
-        <div class="p-1 rounded-2xl" style="background-color: #171717; border: 1px solid #262626;">
-             <div class="px-4 py-3 border-b border-neutral-800 flex items-center gap-2">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-neutral-500"><path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path><polyline points="13 2 13 9 20 9"></polyline></svg>
-                <span class="text-[10px] font-mono text-neutral-500 uppercase tracking-wider">Briefing Stream</span>
-            </div>
-            <div class="divide-y divide-neutral-800">
-                
-    <a href="https://finance.yahoo.com/quote/GOOG/" target="_blank" class="block p-4 hover:bg-white/5 transition-colors group">
-        <div class="flex items-center justify-between mb-1">
-            <span class="text-[9px] font-bold text-blue-400/80 uppercase tracking-wider">Yahoo Finance</span>
-            <span class="text-[10px] font-mono text-neutral-500">Today</span>
-        </div>
-        <h3 class="text-sm font-medium text-gray-200 group-hover:text-white leading-snug">
-            Google's 'Project Genie' Gains Traction in Gaming
-        </h3>
-    </a>
-    
-
-    <a href="https://finance.yahoo.com/quote/NVDA/" target="_blank" class="block p-4 hover:bg-white/5 transition-colors group">
-        <div class="flex items-center justify-between mb-1">
-            <span class="text-[9px] font-bold text-blue-400/80 uppercase tracking-wider">Yahoo Finance</span>
-            <span class="text-[10px] font-mono text-neutral-500">Today</span>
-        </div>
-        <h3 class="text-sm font-medium text-gray-200 group-hover:text-white leading-snug">
-            Nvidia Poised for China H200 Chip Sales Approval
-        </h3>
-    </a>
-    
-
-    <a href="https://edition.cnn.com/2026/01/30/americas/cuba-oil-supply-trump-tariff-mexico-latam-intl" target="_blank" class="block p-4 hover:bg-white/5 transition-colors group">
-        <div class="flex items-center justify-between mb-1">
-            <span class="text-[9px] font-bold text-blue-400/80 uppercase tracking-wider">CNN</span>
-            <span class="text-[10px] font-mono text-neutral-500">Today</span>
-        </div>
-        <h3 class="text-sm font-medium text-gray-200 group-hover:text-white leading-snug">
-            Trump Threatens Tariffs on Mexico Over Cuba Oil
-        </h3>
-    </a>
-    
-
-    <a href="https://edition.cnn.com/2026/02/01/middleeast/iran-diplomat-araghchi-interview-intl" target="_blank" class="block p-4 hover:bg-white/5 transition-colors group">
-        <div class="flex items-center justify-between mb-1">
-            <span class="text-[9px] font-bold text-blue-400/80 uppercase tracking-wider">CNN</span>
-            <span class="text-[10px] font-mono text-neutral-500">Today</span>
-        </div>
-        <h3 class="text-sm font-medium text-gray-200 group-hover:text-white leading-snug">
-            Iran FM Optimistic on Talks Despite US Military Buildup
-        </h3>
-    </a>
-    
-
-    <a href="https://edition.cnn.com/2026/01/31/uk/amelia-meme-ai-far-right-intl-scli" target="_blank" class="block p-4 hover:bg-white/5 transition-colors group">
-        <div class="flex items-center justify-between mb-1">
-            <span class="text-[9px] font-bold text-blue-400/80 uppercase tracking-wider">CNN</span>
-            <span class="text-[10px] font-mono text-neutral-500">Today</span>
-        </div>
-        <h3 class="text-sm font-medium text-gray-200 group-hover:text-white leading-snug">
-            AI 'Schoolgirl' Meme Growing in Far-Right Circles
-        </h3>
-    </a>
-    
-            </div>
-        </div>
+        </footer>
 
     </div>
-
-    <footer class="mt-12 text-center">
-        <p class="text-[10px] font-mono text-neutral-600 uppercase">
-            Generated by OpenClaw • SESS-GEN
-        </p>
-    </footer>
-
 </body>
 </html>
