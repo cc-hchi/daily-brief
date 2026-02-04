@@ -1,54 +1,45 @@
 {
-  "date": "2026-02-03",
-  "session_id": "SESS-MORNING-02",
-  "weather": {
-    "temp": "+15°C",
-    "cond": "Sunny",
-    "advice": "Pleasant conditions (15°C) with clear skies. Great day for a walk."
-  },
-  "hero_news": {
-    "title": "Nvidia's $100B OpenAI Investment 'Stalled'",
-    "source": "CNBC / Reuters",
-    "summary": "Nvidia shares dipped after reports that its planned $100 billion investment in OpenAI is stalled. CEO Jensen Huang clarified the figure was a 'non-binding' intent, signaling potential friction in the massive AI infrastructure partnership.",
-    "url": "https://www.cnbc.com/2026/02/02/nvidia-stock-price-openai-funding.html"
-  },
-  "stocks": [
-    { "symbol": "NVDA", "price": "Trending Down", "change": "-2.8%", "trend": "down" },
-    { "symbol": "BTC", "price": "$78,200", "change": "-4.5%", "trend": "down" },
-    { "symbol": "GOOG", "price": "Stable", "change": "+0.1%", "trend": "neutral" }
-  ],
-  "secondary_news": [
+  "date": "2026-02-04",
+  "level1": [
     {
-      "title": "Notepad++ Updates Hijacked by State Actors",
-      "source": "The Hacker News",
-      "time": "4h ago",
-      "url": "https://thehackernews.com/2026/02/notepad-official-update-mechanism.html",
-      "tags": ["Security", "Critical"]
+      "title": "Oracle Launches Agentic AI Platform for Banking",
+      "snippet": "Oracle introduced a new enterprise suite of AI-infused applications and pre-built agents at the Financial Services Summit, aiming to reshape retail banking with automated design tools and frameworks."
     },
     {
-      "title": "Anthropic Partners with Allen Institute for Science AI",
-      "source": "DNYUZ",
-      "time": "10h ago",
-      "url": "https://dnyuz.com",
-      "tags": ["AI", "Science"]
+      "title": "AI Math Startup Valuation Quintuples",
+      "snippet": "A major backer of Anthropic has reportedly quintupled the valuation of an AI math startup in a new exclusive deal, signaling continued strong investor interest in specialized AI capabilities."
     },
     {
-      "title": "Oracle May Lay Off 30,000 for AI Pivot",
-      "source": "OpenTools",
-      "time": "8h ago",
-      "url": "https://opentools.ai",
-      "tags": ["Business", "Layoffs"]
+      "title": "BayesShield AI Blocks 92% of Losing Trades",
+      "snippet": "Perpetuals.com's BayesShield, powered by NVIDIA hardware, demonstrated a 92% success rate in blocking losing retail trades in a major backtest, showcasing AI's growing role in financial risk management."
     }
   ],
-  "hacker_news": [
-    { "title": "Notepad++ hijacked by state-sponsored actors", "points": 892, "url": "https://news.ycombinator.com/item?id=46851548" },
-    { "title": "We've Reached Peak LLM: System-Level AI is Next", "points": 340, "url": "https://www.salesforce.com/blog/system-level-ai/" },
-    { "title": "Show HN: Browser in a Browser", "points": 452, "url": "#" },
-    { "title": "PostgreSQL 18 Released", "points": 320, "url": "#" }
+  "market": [
+    {
+      "symbol": "NVDA",
+      "price": "$185.61",
+      "change": "Trading around $186",
+      "news": "Market Cap reaches $4.51T. Analysts monitoring China export risks."
+    },
+    {
+      "symbol": "GOOGL",
+      "price": "$343.69",
+      "change": "Steady uptrend ahead of earnings",
+      "news": "Stifel raises price target to $346 ahead of Q4 earnings; focus on cloud growth and AI capex."
+    }
   ],
-  "github_trending": [
-    { "repo": "shadcn/ui", "lang": "TypeScript", "stars": "+1.2k" },
-    { "repo": "pytorch/pytorch", "lang": "Python", "stars": "+850" },
-    { "repo": "oven-sh/bun", "lang": "Zig", "stars": "+600" }
+  "level2": [
+    {
+      "title": "India-US Trade Deal Boosts Tech Sector",
+      "snippet": "A new trade agreement is set to significantly boost semiconductors, data centers, and AI manufacturing in India, strengthening global tech supply chains."
+    },
+    {
+      "title": "France Bans Public Officials from US Tech",
+      "snippet": "In a growing backlash against US technology dominance, France has moved to ban public officials from using American technology, seeking sovereignty and alternatives."
+    },
+    {
+      "title": "Motorola Razr 70 Global Launch Imminent",
+      "snippet": "The new foldable phone has appeared in certification databases, suggesting a release is coming soon."
+    }
   ]
 }
