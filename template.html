@@ -1,19 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Daily Brief</title>
+    <title>每日情报</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
-                        background: '#0a0a0a',
+                        background: '#050505',
                         surface: '#111111',
-                        border: '#333333',
+                        border: '#262626',
+                        accent: '#5B8CFF',
                     },
                     animation: {
                         'fade-in': 'fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards',
@@ -29,145 +30,142 @@
         }
     </script>
     <style>
-        body { font-family: 'Inter', sans-serif; }
+        body { font-family: 'Noto Sans SC', sans-serif; }
         .mono { font-family: 'JetBrains Mono', monospace; }
-        /* Hide scrollbar for clean look */
         ::-webkit-scrollbar { width: 0px; background: transparent; }
     </style>
 </head>
-<body style="background-color: #050505; color: #ededed;" class="antialiased min-h-screen p-4 md:p-6 lg:p-8">
+<body class="antialiased min-h-screen p-4 md:p-6 lg:p-8" style="background-color:#050505;color:#ededed;">
 
     <div class="max-w-6xl mx-auto animate-fade-in">
-        
-        <!-- Header / Status Bar -->
-        <header class="flex justify-between items-end mb-6 pb-4 border-b border-neutral-800" style="border-color: #262626;">
+        <!-- 顶部状态栏 -->
+        <header class="flex flex-col md:flex-row md:items-end md:justify-between gap-4 mb-6 pb-4 border-b border-neutral-800" style="border-color:#262626;">
             <div>
-                <h1 class="text-3xl md:text-5xl font-bold tracking-tight text-white mb-2 leading-none">{{DATE_STR_SHORT}}</h1>
-                <div class="flex items-center gap-3 text-xs mono text-neutral-500">
-                    <div class="flex items-center gap-2 px-2 py-0.5 rounded border border-neutral-800 bg-neutral-900/50" style="background-color: #111; border-color: #333;">
+                <h1 class="text-3xl md:text-5xl font-bold tracking-tight text-white leading-none">{{DATE_CN}}</h1>
+                <div class="mt-2 flex items-center gap-3 text-xs mono text-neutral-500">
+                    <div class="flex items-center gap-2 px-2 py-0.5 rounded border border-neutral-800 bg-neutral-900/50" style="background-color:#111;border-color:#333;">
                         <span class="relative flex h-2 w-2">
                           <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
                           <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
                         </span>
-                        <span>SYSTEM ONLINE</span>
+                        <span>系统在线</span>
                     </div>
-                    <span>{{DATE_SHORT}}</span>
+                    <span>{{DATE_FULL}}</span>
                     <span class="text-neutral-600">|</span>
-                    <span>{{SESSION_ID}}</span>
+                    <span>{{WEEKDAY_CN}}</span>
+                    <span class="text-neutral-600">|</span>
+                    <span>会话 {{SESSION_ID}}</span>
+                </div>
+                <div class="mt-3 flex flex-wrap items-center gap-2 text-[10px] text-neutral-600 mono">
+                    <span class="px-2 py-0.5 border border-neutral-800 rounded">阅读时长 3–5 分钟</span>
+                    <span class="px-2 py-0.5 border border-neutral-800 rounded">决策级摘要</span>
+                    <span class="px-2 py-0.5 border border-neutral-800 rounded">行动优先</span>
                 </div>
             </div>
             <div class="flex gap-2">
-                <a href="{{ARCHIVE_LINK}}" class="mono text-[10px] font-medium text-neutral-400 hover:text-white px-3 py-1.5 hover:bg-neutral-800 transition-colors uppercase tracking-wider" style="border: 1px solid #333; border-radius: 4px;">
-                    // Archive
+                <a href="{{ARCHIVE_LINK}}" class="mono text-[10px] font-medium text-neutral-400 hover:text-white px-3 py-1.5 hover:bg-neutral-800 transition-colors uppercase tracking-wider" style="border:1px solid #333;border-radius:4px;">
+                    // 归档
                 </a>
             </div>
         </header>
 
-        <!-- Bento Grid -->
+        <!-- 主题雷达 -->
+        <div class="mb-4 flex flex-wrap items-center gap-2">
+            <span class="mono text-[10px] text-neutral-500">主题雷达</span>
+            {{THEME_TAGS}}
+        </div>
+
+        <!-- 主体布局 -->
         <div class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6">
-            
-            <!-- Hero Section (Cols 1-8) -->
-            <div class="col-span-1 md:col-span-8 group relative flex flex-col justify-between min-h-[320px] rounded-xl overflow-hidden p-6 md:p-8 transition-all hover:border-neutral-600" style="background-color: #111111; border: 1px solid #262626;">
-                <div class="absolute inset-0 bg-gradient-to-br from-neutral-900/50 to-black pointer-events-none"></div>
-                <!-- Subtle background mesh/grid can be added here -->
-                
+            <!-- 今日最重要 -->
+            <div class="col-span-1 md:col-span-8 group relative flex flex-col justify-between min-h-[320px] rounded-xl overflow-hidden p-6 md:p-8" style="background-color:#111111;border:1px solid #262626;">
+                <div class="absolute inset-0 bg-gradient-to-br from-neutral-900/60 to-black pointer-events-none"></div>
                 <div class="relative z-10 flex justify-between items-start">
-                    <div class="inline-flex items-center gap-2 px-2 py-1 rounded bg-blue-500/10 border border-blue-500/20 text-blue-400 text-[10px] font-bold uppercase tracking-wider">
+                    <div class="inline-flex items-center gap-2 px-2 py-1 rounded bg-blue-500/10 border border-blue-500/20 text-blue-300 text-[10px] font-bold uppercase tracking-wider">
                         <span class="w-1 h-1 bg-blue-400 rounded-full animate-pulse"></span>
-                        Top Story
+                        今日最重要
                     </div>
                     <span class="mono text-[10px] text-neutral-500 uppercase tracking-widest">{{HERO_SOURCE}}</span>
                 </div>
-
                 <div class="relative z-10 mt-auto">
-                    <a href="{{HERO_URL}}" target="_blank" class="block group-hover:opacity-80 transition-opacity">
+                    <a href="{{HERO_URL}}" target="_blank" class="block group-hover:opacity-90 transition-opacity">
                         <h2 class="text-3xl md:text-4xl font-semibold text-white leading-[1.1] mb-4 tracking-tight">
                             {{HERO_TITLE}}
                         </h2>
                     </a>
-                    <p class="text-sm md:text-base text-neutral-400 leading-relaxed max-w-2xl border-l-2 border-neutral-800 pl-4" style="border-color: #333;">
+                    <p class="text-sm md:text-base text-neutral-400 leading-relaxed max-w-2xl border-l-2 border-neutral-800 pl-4" style="border-color:#333;">
                         {{HERO_SUMMARY}}
                     </p>
+                    <div class="mt-4 text-xs text-neutral-500 mono">
+                        关键结论：<span class="text-neutral-300">{{HERO_TAKEAWAY}}</span>
+                    </div>
                 </div>
             </div>
 
-            <!-- Sidebar: Markets & Weather (Cols 9-12) -->
+            <!-- 右侧栏：行动清单 / 关注信号 / 天气 -->
             <div class="col-span-1 md:col-span-4 flex flex-col gap-4 md:gap-6">
-                
-                <!-- Weather Compact -->
-                <div class="p-5 rounded-xl flex items-center justify-between" style="background-color: #111111; border: 1px solid #262626;">
+                <div class="p-5 rounded-xl" style="background-color:#111111;border:1px solid #262626;">
+                    <div class="flex items-center justify-between mb-3 pb-2 border-b border-neutral-800" style="border-color:#262626;">
+                        <span class="mono text-[10px] text-neutral-500 uppercase tracking-wider">行动清单</span>
+                        <span class="text-[10px] text-neutral-600">需完成</span>
+                    </div>
+                    <div class="space-y-3">
+                        {{ACTION_LIST}}
+                    </div>
+                </div>
+
+                <div class="p-5 rounded-xl" style="background-color:#111111;border:1px solid #262626;">
+                    <div class="flex items-center justify-between mb-3 pb-2 border-b border-neutral-800" style="border-color:#262626;">
+                        <span class="mono text-[10px] text-neutral-500 uppercase tracking-wider">关注信号</span>
+                        <span class="text-[10px] text-neutral-600">最新</span>
+                    </div>
+                    <div class="space-y-3">
+                        {{SIGNAL_LIST}}
+                    </div>
+                </div>
+
+                <div class="p-5 rounded-xl flex items-center justify-between" style="background-color:#111111;border:1px solid #262626;">
                     <div>
-                        <div class="mono text-[10px] text-neutral-500 uppercase mb-1">Shenzhen, CN</div>
+                        <div class="mono text-[10px] text-neutral-500 uppercase mb-1">{{WEATHER_CITY}}</div>
                         <div class="text-2xl font-medium text-white">{{WEATHER_TEMP_VAL}} <span class="text-neutral-500 text-base font-normal">{{WEATHER_COND}}</span></div>
                     </div>
-                    <!-- Icon Placeholder -->
                     <div class="text-right">
-                         <div class="w-10 h-10 rounded-full border border-neutral-800 flex items-center justify-center bg-neutral-900 text-yellow-500" style="border-color: #333;">
-                            ☀
-                        </div>
+                        <div class="w-10 h-10 rounded-full border border-neutral-800 flex items-center justify-center bg-neutral-900 text-yellow-500" style="border-color:#333;">☀</div>
                     </div>
                 </div>
-
-                <!-- Markets Table -->
-                <div class="flex-1 p-5 rounded-xl flex flex-col" style="background-color: #111111; border: 1px solid #262626;">
-                    <div class="flex justify-between items-center mb-4 pb-2 border-b border-neutral-800" style="border-color: #262626;">
-                        <span class="mono text-[10px] text-neutral-500 uppercase tracking-wider">Market Data</span>
-                        <div class="flex items-center gap-1.5">
-                            <span class="relative flex h-1.5 w-1.5">
-                              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                              <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-emerald-500"></span>
-                            </span>
-                            <span class="text-[10px] text-emerald-500 font-medium">Live</span>
-                        </div>
-                    </div>
-                    
-                    <div class="space-y-4 flex-1">
-                        {{STOCK_LIST}}
-                    </div>
-                </div>
-
             </div>
 
-            <!-- Secondary News Grid (Full Width, split 3) -->
+            <!-- 重要信息 -->
             <div class="col-span-1 md:col-span-12 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 mt-2">
-                {{SECONDARY_NEWS_BLOCKS}}
+                {{IMPORTANT_LIST}}
             </div>
 
-            <!-- Dev Pulse Section (Hacker News & GitHub) -->
+            <!-- 值得收藏 / 可忽略 -->
             <div class="col-span-1 md:col-span-12 grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 mt-2">
-                
-                <!-- Hacker News -->
-                <div class="p-5 rounded-xl" style="background-color: #111111; border: 1px solid #262626;">
-                    <div class="flex items-center gap-2 mb-4 pb-2 border-b border-neutral-800" style="border-color: #262626;">
-                        <span class="w-4 h-4 bg-orange-500 rounded flex items-center justify-center text-[10px] font-bold text-white">Y</span>
-                        <span class="mono text-[10px] text-neutral-500 uppercase tracking-wider">Hacker News</span>
+                <div class="p-5 rounded-xl" style="background-color:#111111;border:1px solid #262626;">
+                    <div class="flex items-center gap-2 mb-4 pb-2 border-b border-neutral-800" style="border-color:#262626;">
+                        <span class="mono text-[10px] text-neutral-500 uppercase tracking-wider">值得收藏</span>
                     </div>
-                    <div class="space-y-1">
-                        {{HN_LIST}}
+                    <div class="space-y-2">
+                        {{SAVE_LIST}}
                     </div>
                 </div>
-
-                <!-- GitHub Trending -->
-                <div class="p-5 rounded-xl" style="background-color: #111111; border: 1px solid #262626;">
-                     <div class="flex items-center gap-2 mb-4 pb-2 border-b border-neutral-800" style="border-color: #262626;">
-                        <svg width="14" height="14" viewBox="0 0 24 24" fill="white"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
-                        <span class="mono text-[10px] text-neutral-500 uppercase tracking-wider">GitHub Trending</span>
+                <div class="p-5 rounded-xl" style="background-color:#111111;border:1px solid #262626;">
+                    <div class="flex items-center gap-2 mb-4 pb-2 border-b border-neutral-800" style="border-color:#262626;">
+                        <span class="mono text-[10px] text-neutral-500 uppercase tracking-wider">可忽略</span>
                     </div>
-                    <div class="space-y-1">
-                        {{GH_LIST}}
+                    <div class="space-y-2">
+                        {{IGNORE_LIST}}
                     </div>
                 </div>
-
             </div>
-
         </div>
 
-        <footer class="mt-16 py-8 border-t border-neutral-900 text-center" style="border-color: #1a1a1a;">
-            <p class="mono text-[10px] text-neutral-600 uppercase tracking-widest">
-                Generated by OpenClaw • Night Shift Design Unit
+        <footer class="mt-16 py-8 border-t border-neutral-900 text-center" style="border-color:#1a1a1a;">
+            <p class="mono text-[10px] text-neutral-600 tracking-widest">
+                由 OpenClaw 生成 • 个人情报系统
             </p>
         </footer>
-
     </div>
 </body>
 </html>
