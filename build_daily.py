@@ -171,10 +171,14 @@ def build():
     important_list = data.get("important", [])
     save_list = data.get("save", [])
     ignore_list = data.get("ignore", [])
+    agent_news = data.get("agent_news", [])
+    tech_news = data.get("tech_news", [])
 
     html = html.replace("{{ACTION_LIST}}", "\n".join([render_action_item(i) for i in action_list]) or "<div class=\"text-xs text-neutral-600\">暂无需要处理的事项</div>")
     html = html.replace("{{SIGNAL_LIST}}", "\n".join([render_signal_item(i) for i in signal_list]) or "<div class=\"text-xs text-neutral-600\">暂无新增信号</div>")
     html = html.replace("{{IMPORTANT_LIST}}", "\n".join([render_important_card(i) for i in important_list]) or "<div class=\"text-xs text-neutral-600\">暂无重要信息</div>")
+    html = html.replace("{{AGENT_NEWS_LIST}}", "\n".join([render_simple_list(i) for i in agent_news]) or "<div class=\"text-xs text-neutral-600\">暂无条目</div>")
+    html = html.replace("{{TECH_NEWS_LIST}}", "\n".join([render_simple_list(i) for i in tech_news]) or "<div class=\"text-xs text-neutral-600\">暂无条目</div>")
     html = html.replace("{{SAVE_LIST}}", "\n".join([render_simple_list(i) for i in save_list]) or "<div class=\"text-xs text-neutral-600\">暂无条目</div>")
     html = html.replace("{{IGNORE_LIST}}", "\n".join([render_simple_list(i) for i in ignore_list]) or "<div class=\"text-xs text-neutral-600\">暂无条目</div>")
 

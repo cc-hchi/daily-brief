@@ -1,106 +1,50 @@
 {
-  "date": "2026-02-05",
-  "session_id": "SESS-GEN",
-  "themes": ["AI 安全与治理", "AI 芯片与资本开支", "全球科技市场", "云与合作", "股市波动"],
-  "hero_news": {
-    "title": "Sam Altman 招聘前 Anthropic 工程师担任 OpenAI Preparedness 负责人",
-    "summary": "报道称 OpenAI 任命前 Anthropic 工程师担任 Preparedness 负责人，强调为“极其强大的模型”做准备。",
-    "takeaway": "前沿模型的安全治理与准备工作正成为大型 AI 实验室的核心投入方向。",
-    "source": "Meyka",
-    "url": "https://meyka.com/blog/sam-altman-hires-ex-anthropic-engineer-as-openai-braces-for-extremely-powerful-models/"
+  "date": "2026-02-06",
+  "ai_highlights": [
+    {
+      "headline": "New 3D Chip Design Stacks Memory and Compute",
+      "summary": "Researchers have developed a 3D chip architecture that vertically stacks memory and computing elements, reducing data travel distance and significantly increasing speed compared to traditional flat designs.",
+      "source": "ScienceDaily"
+    },
+    {
+      "headline": "Anthropic's 'Claude Cowork' Launch Shocks Markets",
+      "summary": "The release of Anthropic's 'Claude Cowork' has triggered a massive sell-off in the IT sector, wiping out billions in market value as investors react to the potential disruption of white-collar work.",
+      "source": "India TV / Bloomberg"
+    },
+    {
+      "headline": "AI-Powered 'a-Heal' Wearable for Wound Recovery",
+      "summary": "A new device called 'a-Heal' integrates AI, imaging, and bioelectronics to continuously monitor wounds and diagnose healing stages, promising faster recovery times.",
+      "source": "ScienceDaily"
+    }
+  ],
+  "market_data": {
+    "nvda": {
+      "price": "$174.19",
+      "trend": "Volatile amid broader tech sell-off",
+      "news": "Trading around $174; caught in broader sector volatility following AI agent releases."
+    },
+    "goog": {
+      "price": "Falling (~5% drop)",
+      "trend": "Bearish",
+      "news": "Shares sank after announcing a massive $180 billion spending forecast, raising concerns about the cost of the AI arms race."
+    },
+    "summary": "Global tech stocks face heavy selling pressure (the 'Claude Cowork' effect) and concerns over ballooning AI capital expenditures from majors like Alphabet."
   },
-  "weather": {
-    "city": "深圳",
-    "temp": "18-27℃",
-    "cond": "多云/可能有雨",
-    "source": "wetter.de",
-    "url": "https://www.wetter.de/wetter/r/3464353/"
-  },
-  "actions": [
+  "tech_headlines": [
     {
-      "title": "关注谷歌资本开支上调对 AI 供应链的影响",
-      "detail": "跟踪 Alphabet 2026 年资本开支指引与市场反应。",
-      "priority": "高",
-      "source": "Yahoo Finance",
-      "url": "https://finance.yahoo.com/news/alphabet-2026-spending-forecast-soars-past-wall-street-expectations-as-google-parent-goes-all-in-on-ai-195254701.html"
+      "headline": "Washington Post Cuts 300 Jobs in Global Layoffs",
+      "summary": "The Jeff Bezos-owned publication announced significant workforce reductions, cutting about one-third of its newsroom staff.",
+      "source": "NDTV"
     },
     {
-      "title": "跟踪 NVDA/GOOG 股价与 AI 概念股波动",
-      "detail": "查看美股科技板块回撤与情绪变化。",
-      "priority": "中",
-      "source": "Yahoo Finance Live",
-      "url": "https://finance.yahoo.com/news/live/stock-market-today-sp-500-nasdaq-sink-as-ai-worries-fuel-return-to-tech-sell-off-ahead-of-google-earnings-160743451.html"
+      "headline": "Alphabet's $180B Spending Plan Rattles Investors",
+      "summary": "Google's parent company forecasts massive capital expenditure for 2026, signaling an 'all-in' approach to AI that has made Wall Street nervous about margins.",
+      "source": "Yahoo Finance"
     },
     {
-      "title": "留意印度 IT 行业受 AI 工具冲击的后续",
-      "detail": "关注全球外包与软件服务板块的估值变化。",
-      "priority": "低",
-      "source": "Reuters",
-      "url": "https://www.reuters.com/world/india/indian-tech-stocks-slump-anthropics-ai-tool-raises-global-staffing-concerns-2026-02-04/"
-    }
-  ],
-  "signals": [
-    {
-      "title": "谷歌资本开支上调带动 AI 供应链股走强",
-      "detail": "CNBC 报道称 Google 资本开支上升推动 Broadcom 与 Nvidia 走高。",
-      "source": "CNBC",
-      "time": "2 小时前",
-      "url": "https://www.cnbc.com/2026/02/04/broadcom-google-tpu-ai-nvidia.html"
-    },
-    {
-      "title": "Alphabet 2026 年资本开支指引引发盘后波动",
-      "detail": "Yahoo Finance 报道称 GOOG 盘后下挫后回升。",
-      "source": "Yahoo Finance",
-      "time": "2 小时前",
-      "url": "https://finance.yahoo.com/news/alphabet-2026-spending-forecast-soars-past-wall-street-expectations-as-google-parent-goes-all-in-on-ai-195254701.html"
-    }
-  ],
-  "important": [
-    {
-      "title": "Anthropic 新工具引发印度科技股下挫",
-      "summary": "路透报道印度 IT 出口股因 AI 工具冲击担忧而回落。",
-      "source": "Reuters",
-      "time": "19 小时前",
-      "url": "https://www.reuters.com/world/india/indian-tech-stocks-slump-anthropics-ai-tool-raises-global-staffing-concerns-2026-02-04/"
-    },
-    {
-      "title": "Google 资本开支提升带动 AI 供应链股票上涨",
-      "summary": "CNBC 报道 Google 资本开支增长令 Broadcom 与 Nvidia 走强。",
-      "source": "CNBC",
-      "time": "2 小时前",
-      "url": "https://www.cnbc.com/2026/02/04/broadcom-google-tpu-ai-nvidia.html"
-    },
-    {
-      "title": "Alphabet 2026 年支出指引超预期引发股价波动",
-      "summary": "Yahoo Finance 报道 GOOG 盘后跌后回升。",
-      "source": "Yahoo Finance",
-      "time": "2 小时前",
-      "url": "https://finance.yahoo.com/news/alphabet-2026-spending-forecast-soars-past-wall-street-expectations-as-google-parent-goes-all-in-on-ai-195254701.html"
-    }
-  ],
-  "save": [
-    {
-      "title": "Amazon 与 Prosus 达成 AI 与云合作",
-      "summary": "报道称双方合作以加速 Prosus 的 AI 与云能力。",
-      "source": "Cryptopolitan",
-      "time": "14 小时前",
-      "url": "https://www.cryptopolitan.com/amazon-strikes-major-ai-and-cloud-pact/"
-    },
-    {
-      "title": "AI Weekly：OpenAI 与 Nvidia 的潜在摩擦引发关注",
-      "summary": "Yahoo Finance 视频讨论 AI 芯片与行业关系变化。",
-      "source": "Yahoo Finance",
-      "time": "13 小时前",
-      "url": "https://finance.yahoo.com/video/ai-weekly-openai-nvidia-tensions-110730611.html"
-    }
-  ],
-  "ignore": [
-    {
-      "title": "通用科技频道聚合页",
-      "summary": "非具体头条，仅为科技新闻目录页面。",
-      "source": "The Indian Express",
-      "time": "1 天前",
-      "url": "https://indianexpress.com/section/technology/"
+      "headline": "Global Markets React to AI Valuation Concerns",
+      "summary": "A heavy sell-off in software and crypto markets is being driven by renewed fears over AI valuations and the tangible economic impact of new AI agents.",
+      "source": "Bloomberg"
     }
   ]
 }
