@@ -1,50 +1,50 @@
 {
-  "date": "2026-02-06",
+  "date": "2026-02-07",
   "ai_highlights": [
     {
-      "headline": "New 3D Chip Design Stacks Memory and Compute",
-      "summary": "Researchers have developed a 3D chip architecture that vertically stacks memory and computing elements, reducing data travel distance and significantly increasing speed compared to traditional flat designs.",
-      "source": "ScienceDaily"
+      "headline": "OpenAI Launches 'Frontier' for Autonomous Enterprise",
+      "summary": "OpenAI has released 'Frontier', a platform designed to deploy and govern autonomous AI co-workers at scale, targeting Fortune 500 companies and enabling the 'Autonomous Enterprise'.",
+      "source": "FinancialContent"
     },
     {
-      "headline": "Anthropic's 'Claude Cowork' Launch Shocks Markets",
-      "summary": "The release of Anthropic's 'Claude Cowork' has triggered a massive sell-off in the IT sector, wiping out billions in market value as investors react to the potential disruption of white-collar work.",
-      "source": "India TV / Bloomberg"
+      "headline": "Palladyne AI Achieves SwarmOS Flight Milestone",
+      "summary": "Palladyne AI successfully flew its 'IntelliSwarm' software, demonstrating autonomous swarming capabilities integrated into the BRAIN X2 flight computer.",
+      "source": "Stock Titan"
     },
     {
-      "headline": "AI-Powered 'a-Heal' Wearable for Wound Recovery",
-      "summary": "A new device called 'a-Heal' integrates AI, imaging, and bioelectronics to continuously monitor wounds and diagnose healing stages, promising faster recovery times.",
-      "source": "ScienceDaily"
+      "headline": "PolyU Unveils Advanced Graph Neural Networks",
+      "summary": "Researchers at Hong Kong PolyU have developed innovative GNN models to decode complexities in image recognition and neuroscience, promising better AI understanding of complex structures.",
+      "source": "Bioengineer.org"
     }
   ],
   "market_data": {
     "nvda": {
-      "price": "$174.19",
-      "trend": "Volatile amid broader tech sell-off",
-      "news": "Trading around $174; caught in broader sector volatility following AI agent releases."
+      "price": "$185.65",
+      "trend": "Bullish (+8.0%)",
+      "news": "Shares surged after Alphabet announced a massive $175-185B capital expenditure plan, signaling sustained demand for Nvidia's data center GPUs."
     },
     "goog": {
-      "price": "Falling (~5% drop)",
-      "trend": "Bearish",
-      "news": "Shares sank after announcing a massive $180 billion spending forecast, raising concerns about the cost of the AI arms race."
+      "price": "Volatile",
+      "trend": "Mixed",
+      "news": "Alphabet's commitment to doubling capex to ~$180B for AI infrastructure highlights leadership ambition but raises investor concerns over rising costs."
     },
-    "summary": "Global tech stocks face heavy selling pressure (the 'Claude Cowork' effect) and concerns over ballooning AI capital expenditures from majors like Alphabet."
+    "summary": "Markets are reacting to the 'AI Arms Race' entering a new capital-intensive phase, with hardware providers like Nvidia rallying while investors weigh the costs for hyperscalers."
   },
   "tech_headlines": [
     {
-      "headline": "Washington Post Cuts 300 Jobs in Global Layoffs",
-      "summary": "The Jeff Bezos-owned publication announced significant workforce reductions, cutting about one-third of its newsroom staff.",
-      "source": "NDTV"
+      "headline": "Musk Denies Starlink Smartphone Rumors",
+      "summary": "Elon Musk clarified that SpaceX is not developing a standalone 'Starlink Phone', focusing instead on direct-to-cell satellite connectivity for existing devices.",
+      "source": "NewsX"
     },
     {
-      "headline": "Alphabet's $180B Spending Plan Rattles Investors",
-      "summary": "Google's parent company forecasts massive capital expenditure for 2026, signaling an 'all-in' approach to AI that has made Wall Street nervous about margins.",
-      "source": "Yahoo Finance"
+      "headline": "Global Funds Shift from US Tech to Europe/Asia",
+      "summary": "Investors are diversifying portfolios by reducing exposure to volatile US technology shares and increasing inflows into European and Asian equity funds.",
+      "source": "Investing.com / Reuters"
     },
     {
-      "headline": "Global Markets React to AI Valuation Concerns",
-      "summary": "A heavy sell-off in software and crypto markets is being driven by renewed fears over AI valuations and the tangible economic impact of new AI agents.",
-      "source": "Bloomberg"
+      "headline": "TechEx Global 2026 Highlights Enterprise AI",
+      "summary": "The London event showcased practical AI execution, digital transformation, and IoT strategies for enterprise leaders.",
+      "source": "The Next Web"
     }
   ]
 }
