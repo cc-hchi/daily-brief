@@ -1,50 +1,59 @@
 {
-  "date": "2026-02-07",
+  "date": "2026-02-10",
   "ai_highlights": [
     {
-      "headline": "OpenAI Launches 'Frontier' for Autonomous Enterprise",
-      "summary": "OpenAI has released 'Frontier', a platform designed to deploy and govern autonomous AI co-workers at scale, targeting Fortune 500 companies and enabling the 'Autonomous Enterprise'.",
-      "source": "FinancialContent"
+      "title": "Palladyne AI Propulsion Contract",
+      "summary": "Palladyne AI Corp. awarded a major defense contract to deliver an AI-driven propulsion subsystem, enhancing performance and maneuverability for defense platforms.",
+      "link": "https://www.crescendo.ai/news/latest-ai-news-and-updates"
     },
     {
-      "headline": "Palladyne AI Achieves SwarmOS Flight Milestone",
-      "summary": "Palladyne AI successfully flew its 'IntelliSwarm' software, demonstrating autonomous swarming capabilities integrated into the BRAIN X2 flight computer.",
-      "source": "Stock Titan"
+      "title": "AI Discovers Hidden Gene Role in Brain",
+      "summary": "UC San Diego researchers using AI protein modeling found that the PHGDH gene has a 'moonlighting' role disrupting gene switching in brain cells, potentially fueling disease.",
+      "link": "https://today.ucsd.edu/story/nine-breakthroughs-made-possible-by-ai"
     },
     {
-      "headline": "PolyU Unveils Advanced Graph Neural Networks",
-      "summary": "Researchers at Hong Kong PolyU have developed innovative GNN models to decode complexities in image recognition and neuroscience, promising better AI understanding of complex structures.",
-      "source": "Bioengineer.org"
+      "title": "Smart Wound Healing Device 'a-Heal'",
+      "summary": "A new wearable device combines AI, imaging, and bioelectronics to monitor wounds and apply personalized treatments to speed up recovery.",
+      "link": "https://www.sciencedaily.com/news/computers_math/artificial_intelligence/"
+    },
+    {
+      "title": "Atomic Communication in Silicon",
+      "summary": "UNSW researchers used electrons to enable atomic nuclei to communicate, achieving entanglement at scales relevant for future quantum computer chips.",
+      "link": "https://www.sciencedaily.com/news/computers_math/artificial_intelligence/"
     }
   ],
   "market_data": {
     "nvda": {
-      "price": "$185.65",
-      "trend": "Bullish (+8.0%)",
-      "news": "Shares surged after Alphabet announced a massive $175-185B capital expenditure plan, signaling sustained demand for Nvidia's data center GPUs."
+      "price": "174.19",
+      "change": "-3.41%",
+      "news": "NVIDIA continues to be a key technology supplier in the AI growth race for 2026."
     },
     "goog": {
-      "price": "Volatile",
-      "trend": "Mixed",
-      "news": "Alphabet's commitment to doubling capex to ~$180B for AI infrastructure highlights leadership ambition but raises investor concerns over rising costs."
-    },
-    "summary": "Markets are reacting to the 'AI Arms Race' entering a new capital-intensive phase, with hardware providers like Nvidia rallying while investors weigh the costs for hyperscalers."
+      "price": "333.04",
+      "change": "-1.96%",
+      "news": "Alphabet (GOOGL) remains a scaled technology platform leader, competing closely with Nvidia in AI infrastructure."
+    }
   },
   "tech_headlines": [
     {
-      "headline": "Musk Denies Starlink Smartphone Rumors",
-      "summary": "Elon Musk clarified that SpaceX is not developing a standalone 'Starlink Phone', focusing instead on direct-to-cell satellite connectivity for existing devices.",
-      "source": "NewsX"
+      "title": "OnePlus 15 Goes Global",
+      "summary": "OnePlus 15 launches globally with a massive 7,300mAh battery, though with specific conditions for US buyers.",
+      "link": "https://www.techradar.com/news/archive"
     },
     {
-      "headline": "Global Funds Shift from US Tech to Europe/Asia",
-      "summary": "Investors are diversifying portfolios by reducing exposure to volatile US technology shares and increasing inflows into European and Asian equity funds.",
-      "source": "Investing.com / Reuters"
+      "title": "Space Data Center Challenges",
+      "summary": "Voyager CEO discusses the ongoing need to solve cooling problems for data centers in space.",
+      "link": "https://www.cnbc.com/technology/"
     },
     {
-      "headline": "TechEx Global 2026 Highlights Enterprise AI",
-      "summary": "The London event showcased practical AI execution, digital transformation, and IoT strategies for enterprise leaders.",
-      "source": "The Next Web"
+      "title": "MIT's 10 Breakthrough Technologies 2026",
+      "summary": "List includes hyperscale data centers, designer babies, smaller nuclear power, and accessible space stations.",
+      "link": "https://www.technologyreview.com/"
+    },
+    {
+      "title": "Apple's Reimagined Siri for 2026",
+      "summary": "Apple officially announces a completely reimagined, AI-powered version of Siri set to debut in 2026.",
+      "link": "https://www.crescendo.ai/news/latest-ai-news-and-updates"
     }
   ]
 }
